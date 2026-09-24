@@ -80,6 +80,33 @@ html.dark [class~='bg-ink'] {
   backdrop-filter: blur(12px);
 }
 
+.header-icon-btn {
+  display: inline-flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgb(168 162 158);
+  color: rgb(87 83 78);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.header-icon-btn:hover {
+  color: #1c1915;
+  border-color: #1c1915;
+}
+
+html.dark .header-icon-btn {
+  border-color: rgb(255 255 255 / 0.28);
+  color: rgb(210 210 210);
+}
+
+html.dark .header-icon-btn:hover {
+  color: #f4f1ea;
+  border-color: rgb(255 255 255 / 0.55);
+}
+
 html.dark .site-header {
   background-color: rgb(26 35 48 / 0.8);
 }

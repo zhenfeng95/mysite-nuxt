@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
   <div>
     <button
       type="button"
-      class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-stone-400 text-stone-600 transition hover:text-ink"
+      class="header-icon-btn"
       aria-label="搜索"
       title="搜索（⌘K）"
       @click="openSearch"

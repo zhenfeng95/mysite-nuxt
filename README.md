@@ -1,6 +1,6 @@
 # ZZF / zzf.net.cn
 
-个人技术笔记，域名是 [zzf.net.cn](https://zzf.net.cn)。备案号：**京ICP备2024066915号-2**。
+个人技术笔记，域名是 [zzf.net.cn](https://zzf.net.cn)。
 
 站点用 Nuxt 3 做静态生成，页面在 HTML 里就能读到正文，方便国内站长平台收录。内容只保留数字基建：DNSHE、OquMail，以及 Google Workspace 的说明。港美股、开户和加密货币不放在这个域名上。
 

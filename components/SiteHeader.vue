@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const isDark = ref(false)
+const menuOpen = ref(false)
 
 const links = [
   { to: '/', label: '首页' },
@@ -19,10 +20,35 @@ onMounted(() => {
   isDark.value = document.documentElement.classList.contains('dark')
 })
 
+watch(() => route.path, () => {
+  menuOpen.value = false
+})
+
+watch(menuOpen, (value) => {
+  if (!import.meta.client) {
+    return
+  }
+  document.body.style.overflow = value ? 'hidden' : ''
+})
+
+onBeforeUnmount(() => {
+  if (import.meta.client) {
+    document.body.style.overflow = ''
+  }
+})
+
 function toggleTheme() {
   isDark.value = !document.documentElement.classList.contains('dark')
   document.documentElement.classList.toggle('dark', isDark.value)
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+}
+
+function toggleMenu() {
+  menuOpen.value = !menuOpen.value
+}
+
+function closeMenu() {
+  menuOpen.value = false
 }
 </script>
 
@@ -35,8 +61,9 @@ function toggleTheme() {
         <img src="/logo.png" alt="" width="32" height="32" class="h-8 w-8">
         ZZF
       </NuxtLink>
-      <div class="flex items-center gap-4 sm:gap-5">
-        <nav class="flex items-center gap-1 text-sm">
+
+      <div class="flex items-center gap-2.5 sm:gap-5">
+        <nav class="hidden items-center gap-1 text-sm sm:flex">
           <NuxtLink
             v-for="link in links"
             :key="link.to"
@@ -47,10 +74,12 @@ function toggleTheme() {
             {{ link.label }}
           </NuxtLink>
         </nav>
+
         <SearchEntry />
+
         <button
           type="button"
-          class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-stone-400 text-stone-600 transition hover:text-ink"
+          class="header-icon-btn"
           :aria-label="isDark ? '切换浅色' : '切换深色'"
           @click="toggleTheme"
         >
@@ -62,7 +91,53 @@ function toggleTheme() {
             <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round" />
           </svg>
         </button>
+
+        <button
+          type="button"
+          class="header-icon-btn sm:hidden"
+          :aria-label="menuOpen ? '关闭菜单' : '打开菜单'"
+          :aria-expanded="menuOpen"
+          @click="toggleMenu"
+        >
+          <svg v-if="!menuOpen" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+          </svg>
+          <svg v-else class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
       </div>
     </div>
+
+    <Teleport to="body">
+      <div
+        v-if="menuOpen"
+        class="fixed inset-0 z-40 sm:hidden"
+      >
+        <button
+          type="button"
+          class="absolute inset-0 bg-ink/30 backdrop-blur-sm"
+          aria-label="关闭菜单"
+          @click="closeMenu"
+        />
+        <nav
+          class="absolute inset-x-0 top-[4.25rem] mx-auto max-w-3xl px-5"
+          aria-label="移动端导航"
+        >
+          <div class="overflow-hidden rounded-2xl border border-stone-300/80 bg-paper shadow-lg">
+            <NuxtLink
+              v-for="link in links"
+              :key="link.to"
+              :to="link.to"
+              class="block border-b border-stone-200 px-4 py-3.5 text-sm last:border-b-0"
+              :class="isActive(link.to) ? 'nav-current' : 'text-stone-700'"
+              @click="closeMenu"
+            >
+              {{ link.label }}
+            </NuxtLink>
+          </div>
+        </nav>
+      </div>
+    </Teleport>
   </header>
 </template>

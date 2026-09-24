@@ -18,6 +18,10 @@ export default defineNuxtConfig({
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
             link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
+            meta: [
+                { name: 'bytedance-verification-code', content: 'BImYavCy7xAQ0tBUtN8A' },
+                { name: 'baidu-site-verification', content: 'codeva-9sBsSvrUOc' },
+            ],
         },
     },
 
