@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.dark body {
+    background-color: #1a2330;
+    color: #f4f1ea;
+  }
+
+  ::selection {
+    background: rgb(47 93 80 / 0.22);
+  }
+}
+
+html.dark [class~='text-ink'],
+html.dark [class~='hover:text-ink']:hover {
+  color: #f4f1ea;
+}
+
+html.dark [class~='text-moss'] {
+  color: #9dccb4;
+}
+
+html.dark [class~='text-stone-800'] {
+  color: #e7e5e4;
+}
+
+html.dark [class~='text-stone-700'] {
+  color: #d6d3d1;
+}
+
+html.dark [class~='text-stone-600'],
+html.dark [class~='text-stone-500'] {
+  color: #a8a29e;
+}
+
+html.dark [class~='bg-paper'],
+html.dark [class~='bg-paper/90'] {
+  background-color: rgb(26 35 48 / 0.92);
+}
+
+html.dark [class~='bg-white/60'],
+html.dark [class~='bg-white/70'],
+html.dark [class~='bg-stone-200/70'] {
+  background-color: rgb(255 255 255 / 0.06);
+}
+
+html.dark [class~='border-stone-300/80'],
+html.dark [class~='border-stone-300'],
+html.dark [class~='border-stone-200'],
+html.dark [class~='border-stone-400'] {
+  border-color: rgb(255 255 255 / 0.14);
+}
+
+html.dark [class~='hover:border-ink']:hover {
+  border-color: rgb(255 255 255 / 0.45);
+}
+
+html.dark [class~='bg-ink'] {
+  background-color: #10151c;
+}
+
+.site-header {
+  background-color: rgb(244 241 234 / 0.8);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+html.dark .site-header {
+  background-color: rgb(26 35 48 / 0.8);
+}
+
+.nav-current {
+  background-color: #1c1915;
+  color: #fff;
+}
+
+html.dark .nav-current {
+  background-color: #f4f1ea;
+  color: #1c1915;
+}
+
+.search-active {
+  background-color: #1c1915;
+  color: #fff;
+}
+
+html.dark .search-active {
+  background-color: #f4f1ea;
+  color: #1c1915;
+}
+
+.home-glow {
+  display: none;
+}
+
+html.dark .home-glow {
+  display: block;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(90, 114, 148, 0.32), transparent 58%),
+    radial-gradient(ellipse at 82% 100%, rgba(110, 74, 24, 0.38), transparent 48%);
+}
+
+.home-wave {
+  stroke: rgb(28 25 21 / 0.16);
+}
+
+html.dark .home-wave {
+  stroke: rgb(255 255 255 / 0.14);
+}
+
+.home-wave-gold {
+  stroke: rgb(232 180 35 / 0.55);
+}
+
+.theme-sun {
+  display: none;
+}
+
+html.dark .theme-moon {
+  display: none;
+}
+
+html.dark .theme-sun {
+  display: block;
+}
+
+.home-copy {
+  background-color: #2a303a;
+  color: #f4f1ea;
+}
+
+.home-copy [class~='text-ink'],
+.home-copy [class~='hover:text-ink']:hover {
+  color: #f4f1ea;
+}
+
+.home-copy [class~='text-stone-600'],
+.home-copy [class~='text-stone-500'] {
+  color: #c8c4bb;
+}
+
+.home-copy [class~='text-moss'] {
+  color: #9dccb4;
+}
+
+.home-copy [class~='border-stone-400'] {
+  border-color: rgb(255 255 255 / 0.35);
+}
+
+.home-copy [class~='hover:border-ink']:hover {
+  border-color: #f4f1ea;
+}
+
+.home-screen .home-wave {
+  stroke: rgb(255 255 255 / 0.16);
+}
