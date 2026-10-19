@@ -1,9 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nuxtjs",
-  "buildCommand": "nuxt generate",
-  "outputDirectory": ".output/public",
-  "installCommand": "npm install",
   "regions": ["sin1"],
   "headers": [
     {

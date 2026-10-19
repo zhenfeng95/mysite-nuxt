@@ -26,13 +26,12 @@ npm run dev
 
 1. 把代码推到 GitHub / GitLab / Bitbucket  
 2. 在 [Vercel](https://vercel.com) 导入该仓库  
-3. Framework Preset 选 **Nuxt.js**（或沿用仓库里的 `vercel.json`）  
-4. Build Command：`nuxt generate`  
-5. Output Directory：`.output/public`  
-6. Functions Region：仓库已在 `vercel.json` 指定 `sin1`（新加坡）；也可在 Dashboard → Settings → Functions 改成 `hkg1`（香港）。Hobby 只能选一个区域。  
-7. 部署  
+3. Framework Preset 选 **Nuxt.js**（沿用 `vercel.json` 即可）  
+4. Build Command / Output 不要手填——交给 Nuxt 默认的 `nuxt build` 与 Vercel Output，**不要**把 `.output` 提交进仓库  
+5. Functions Region：`vercel.json` 已指定 `sin1`；Hobby 只能选一个区域  
+6. 部署  
 
-说明：全站静态资源本身会分发到全球边缘；`regions` 主要约束 **Serverless Functions** 的执行地。纯静态 HIT 时，速度仍主要由 DNS/入口 POP 决定，但改掉默认 `iad1` 可避免偶发回源函数落到美国。
+说明：全站预渲染页面会进 Vercel 边缘缓存；`regions` 主要约束 Functions。不要提交 `.output/`，否则可能部署到旧的静态 HTML。
 
 本地也可：
 
