@@ -1,3 +1,5 @@
+// Fully prerendered for Vercel edge cache (same idea as wise-invest.org on Next.js):
+// build writes static HTML; Vercel serves HIT from nearby POPs (e.g. sin1), no origin compute.
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
@@ -17,24 +19,32 @@ export default defineNuxtConfig({
             htmlAttrs: { lang: 'zh-CN' },
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
-            link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
+            link: [
+                { rel: 'icon', type: 'image/png', href: '/logo.png' },
+                { rel: 'shortcut icon', type: 'image/png', href: '/logo.png' },
+                { rel: 'apple-touch-icon', href: '/logo.png' },
+            ],
             meta: [
                 { name: 'bytedance-verification-code', content: 'BImYavCy7xAQ0tBUtN8A' },
                 { name: 'baidu-site-verification', content: 'codeva-9sBsSvrUOc' },
+                { name: 'shenma-site-verification', content: '7e14af04cc4a33ca966dda5366241475_1790244345' },
             ],
         },
     },
 
     runtimeConfig: {
         public: {
-            siteUrl: 'https://zzf.net.cn',
-            siteName: 'ZZF',
+            siteUrl: 'https://zhenvia.com',
+            siteName: '真途',
             la51Id: '3RIe6jordcKGveLo',
             la51Ck: '3RIe6jordcKGveLo',
         },
     },
 
     routeRules: {
+        // All content routes are static HTML at build time → Vercel CDN HIT
+        '/**': { prerender: true },
+
         '/about': { redirect: { to: '/', statusCode: 301 } },
         '/project': { redirect: { to: '/', statusCode: 301 } },
         '/message': { redirect: { to: '/', statusCode: 301 } },
@@ -54,7 +64,7 @@ export default defineNuxtConfig({
     nitro: {
         prerender: {
             crawlLinks: true,
-            routes: ['/sitemap.xml', '/robots.txt'],
+            routes: ['/', '/sitemap.xml', '/robots.txt'],
         },
     },
 

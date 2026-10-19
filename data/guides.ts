@@ -194,7 +194,7 @@ unzip`,
       type: 'p',
       parts: [
         '在自己电脑上生成本地密钥对。参考：',
-        { text: 'git 生成密钥', href: 'https://www.zzf.net.cn/article/5' },
+        { text: 'git 生成密钥', href: 'https://zhenvia.com/article/5' },
         '。',
       ],
     },
@@ -367,7 +367,7 @@ vim ilovefe.conf
       lang: 'nginx',
       text: `server {
     listen       80;
-    server_name  zzf.net.cn;
+    server_name  zhenvia.com;
     location / {
         root   /usr/local/src/dist;
         index  index.html index.htm;
@@ -480,7 +480,7 @@ const githubWebhookGuide: Guide = {
     {
       type: 'p',
       parts: [
-        '假设项目路径为 /www/wwwroot/zzf.net.cn，只想把仓库中的 dist/ 更新到这个目录。',
+        '假设项目路径为 /www/wwwroot/zhenvia.com，只想把仓库中的 dist/ 更新到这个目录。',
       ],
     },
     { type: 'h3', text: '1、拉完整仓库到缓存目录' },
@@ -507,7 +507,7 @@ git clean -df
 git pull origin main
 
 # 3. 拷贝指定文件（只同步 dist 目录）
-cp -r dist/* /www/wwwroot/zzf.net.cn/dist/
+cp -r dist/* /www/wwwroot/zhenvia.com/dist/
 
 echo "Deploy finished at $(date)"`,
     },
@@ -612,7 +612,7 @@ const acmeCertGuide: Guide = {
   kind: 'steps',
   title: '使用 acme.sh 一键申请并自动续期证书的完整步骤',
   description:
-    '在服务器上安装 acme.sh，用阿里云 DNS API 为 zzf.net.cn 和泛域名申请 Let\'s Encrypt 证书，并在续期后自动同步到 Nginx 或宝塔的证书目录。',
+    '在服务器上安装 acme.sh，用阿里云 DNS API 为 zhenvia.com 和泛域名申请 Let\'s Encrypt 证书，并在续期后自动同步到 Nginx 或宝塔的证书目录。',
   updatedAt: '2026-09-24',
   blocks: [
     { type: 'h2', text: '安装 acme.sh' },
@@ -736,7 +736,7 @@ source ~/.bashrc`,
     {
       type: 'code',
       lang: 'bash',
-      text: `acme.sh --issue --dns dns_ali -d zzf.net.cn -d *.zzf.net.cn`,
+      text: `acme.sh --issue --dns dns_ali -d zhenvia.com -d *.zhenvia.com`,
     },
     {
       type: 'p',
@@ -750,7 +750,7 @@ source ~/.bashrc`,
     {
       type: 'p',
       parts: [
-        '如果配置正确，acme.sh 会自动在阿里云 DNS 里添加 _acme-challenge.zzf.net.cn 这种 TXT 记录，并通过验证，最终生成证书。',
+        '如果配置正确，acme.sh 会自动在阿里云 DNS 里添加 _acme-challenge.zhenvia.com 这种 TXT 记录，并通过验证，最终生成证书。',
       ],
     },
     {
@@ -796,14 +796,14 @@ source ~/.bashrc`,
     },
     {
       type: 'p',
-      parts: ['zzf.net.cn 对应的命令：'],
+      parts: ['zhenvia.com 对应的命令：'],
     },
     {
       type: 'code',
       lang: 'bash',
-      text: `acme.sh --install-cert -d zzf.net.cn \\
---key-file /www/server/panel/vhost/cert/zzf.net.cn/privkey.pem \\
---fullchain-file /www/server/panel/vhost/cert/zzf.net.cn/fullchain.pem \\
+      text: `acme.sh --install-cert -d zhenvia.com \\
+--key-file /www/server/panel/vhost/cert/zhenvia.com/privkey.pem \\
+--fullchain-file /www/server/panel/vhost/cert/zhenvia.com/fullchain.pem \\
 --reloadcmd "bt reload"`,
     },
     {

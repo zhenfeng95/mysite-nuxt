@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SITE_NAME } from '~/data/site'
+
 const route = useRoute()
 const isDark = ref(false)
 const menuOpen = ref(false)
@@ -59,7 +61,7 @@ function closeMenu() {
     <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
       <NuxtLink to="/" class="flex items-center gap-2 text-lg font-semibold tracking-tight text-ink">
         <img src="/logo.png" alt="" width="32" height="32" class="h-8 w-8">
-        ZZF
+        {{ SITE_NAME }}
       </NuxtLink>
 
       <div class="flex items-center gap-2.5 sm:gap-5">

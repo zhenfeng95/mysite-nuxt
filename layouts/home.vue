@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { ICP_NUMBER, ICP_URL } from '~/data/site'
-</script>
-
 <template>
   <div class="home-screen relative flex min-h-screen flex-col">
     <SiteHeader />
@@ -12,9 +8,6 @@ import { ICP_NUMBER, ICP_URL } from '~/data/site'
       </div>
       <footer class="relative z-10 mx-auto w-full max-w-3xl px-5 pb-16 text-center text-xs leading-5 text-stone-500">
         <p>个人技术笔记，仅供信息整理，不构成注册、购买或建站建议。</p>
-        <a :href="ICP_URL" target="_blank" rel="noopener noreferrer" class="mt-1 inline-block text-moss hover:underline">
-          {{ ICP_NUMBER }}
-        </a>
       </footer>
       <svg
         class="pointer-events-none absolute bottom-0 left-0 z-10 h-24 w-full"

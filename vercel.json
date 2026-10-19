@@ -1,0 +1,44 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nuxtjs",
+  "buildCommand": "nuxt generate",
+  "outputDirectory": ".output/public",
+  "installCommand": "npm install",
+  "regions": ["sin1"],
+  "headers": [
+    {
+      "source": "/_nuxt/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/logo.png" }
+  ],
+  "redirects": [
+    { "source": "/about", "destination": "/", "permanent": true },
+    { "source": "/project", "destination": "/", "permanent": true },
+    { "source": "/message", "destination": "/", "permanent": true },
+    { "source": "/article", "destination": "/guides", "permanent": true },
+    { "source": "/article/:path*", "destination": "/guides", "permanent": true },
+    {
+      "source": "/guides/dnshe-free-domain-guide",
+      "destination": "/digital-infra/dnshe-free-domain-guide",
+      "permanent": true
+    },
+    {
+      "source": "/guides/oqumail-free-domain-email-guide",
+      "destination": "/digital-infra/oqumail-free-domain-email-guide",
+      "permanent": true
+    },
+    {
+      "source": "/guides/google-workspace-domain-guide",
+      "destination": "/digital-infra/google-workspace-domain-guide",
+      "permanent": true
+    }
+  ]
+}

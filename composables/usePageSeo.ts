@@ -7,9 +7,10 @@ interface PageSeoInput {
 
 export function usePageSeo(input: PageSeoInput) {
   const config = useRuntimeConfig()
+  const siteName = String(config.public.siteName || '真途')
   const origin = String(config.public.siteUrl).replace(/\/$/, '')
   const canonical = `${origin}${input.path === '/' ? '' : input.path}`
-  const branded = input.path === '/' ? input.title : `${input.title}｜ZZF`
+  const branded = input.path === '/' ? input.title : `${input.title}｜${siteName}`
 
   useSeoMeta({
     title: branded,
