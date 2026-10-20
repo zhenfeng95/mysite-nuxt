@@ -1,3 +1,9 @@
+import { cloudflareFreeStackGuide } from '~/data/tutorials/cloudflare-free-stack-guide'
+import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
+import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
+import { oqumailFreeDomainEmailGuide } from '~/data/tutorials/oqumail-free-domain-email-guide'
+import { spaceshipXyzDomainGuide } from '~/data/tutorials/spaceship-xyz-domain-guide'
+
 
 export type TextPart = string | { text: string; href: string }
 
@@ -6,8 +12,8 @@ export type Block =
   | { type: 'h2'; text: string }
   | { type: 'h3'; text: string }
   | { type: 'h4'; text: string }
-  | { type: 'ul'; items: string[] }
-  | { type: 'ol'; items: string[] }
+  | { type: 'ul'; items: Array<string | TextPart[]> }
+  | { type: 'ol'; items: Array<string | TextPart[]> }
   | { type: 'quote'; parts: TextPart[] }
   | { type: 'code'; lang?: string; text: string }
   | { type: 'img'; src: string; alt: string }
@@ -22,7 +28,6 @@ export interface Guide {
   description: string
   updatedAt: string
   kind: GuideKind
-  fullUrl?: string
   blocks: Block[]
 }
 
@@ -821,218 +826,11 @@ export const guides: Guide[] = [
   websiteDeployGuide,
   githubWebhookGuide,
   acmeCertGuide,
-  {
-    slug: 'dnshe-free-domain-guide',
-    kind: 'excerpt',
-    title: 'DNSHE 免费域名：它解决什么，以及怎么用',
-    description:
-      '整理 DNSHE 免费二级域名的定位、常见后缀、注册与解析边界，以及 2026 年起按年免费续期的规则。完整图文步骤在 Zhen Invest。',
-    updatedAt: '2026-09-09',
-    fullUrl: 'https://zheninvest.com/tutorials/dnshe-free-domain-guide',
-    blocks: [
-      {
-        type: 'p',
-        parts: [
-          'DNSHE 面向开发者、学生、开源项目和早期作品，提供不需要信用卡的免费域名和托管 DNS。它解决的是「先有一个能解析的名字」，不是「买下一枚可以转到任意注册商的 .com」。开放后缀、配额和审核会变，以 ',
-          { text: 'DNSHE 官网', href: 'https://www.dnshe.com' },
-          ' 和客户中心当时的页面为准。',
-        ],
-      },
-      { type: 'h2', text: '你实际拿到的是什么' },
-      {
-        type: 'ul',
-        items: [
-          '平台运营后缀下的免费二级域名，例如 yourname.de5.net',
-          '控制台里的 DNS 记录管理',
-          '面向脚本和测试环境的 API',
-          '基础 DNS 防护；部分场景支持 DNSSEC',
-        ],
-      },
-      {
-        type: 'p',
-        parts: [
-          '「永久免费」指不收年费，不等于注册后可以不管。自 2026 年 1 月 1 日起，新注册的免费域名默认有效期 1 年，到期前 180 天内可以免费续期，续期本身不收费。2026 年 1 月 1 日前已经注册的域名，平台公告称不改为按年注册。',
-        ],
-      },
-      { type: 'h2', text: '常见后缀' },
-      {
-        type: 'table',
-        headers: ['后缀', '更贴近的用途'],
-        rows: [
-          ['.de5.net', '技术博客、作品集、演示站、开源项目'],
-          ['.us.ci', 'CI/CD、API 端点、测试环境'],
-          ['.cc.cd', '个人品牌、设计作品、公开展示'],
-          ['.bot.cd', 'Bot、Webhook、自动化回调'],
-        ],
-      },
-      {
-        type: 'p',
-        parts: [
-          '完整主机名是「前缀.后缀」，前缀大约 2–36 位，只用字母、数字和连字符。控制台里可能还有更多后缀，以当时列表为准。这类名字不能按 .com 的方式转到任意注册商。',
-        ],
-      },
-      { type: 'h2', text: '适合谁' },
-      {
-        type: 'ul',
-        items: [
-          '个人博客、作品集、Demo、Webhook、测试环境，需要立刻有一个可解析的名字',
-          '暂时不想为 .com 付年费，也不想绑定信用卡',
-          '需要 API 或 DDNS，把解析接到部署流水线',
-        ],
-      },
-      {
-        type: 'note',
-        text: '要做长期品牌、对外商务邮箱，或站点主要面向中国大陆并且需要备案时，免费二级域名通常帮不上忙。重要生产流量和资金相关回调，也不适合只押在免费服务上。',
-      },
-      { type: 'h2', text: '注册与解析，先知道这几步' },
-      {
-        type: 'ul',
-        items: [
-          '在官网或客户中心注册。邮箱密码、GitHub 或 Google 登录都可以，联系邮箱要能收信，续期和审核通知会发到那里。',
-          '进入免费域名管理，看注册额度，选择根域名并填写前缀。显示可注册后再确认。不要用脚本批量抢注。',
-          '注册成功后可以在 DNSHE 自己的 DNS 面板里加记录，也可以把名称服务器改到 Cloudflare，之后解析以 Cloudflare 为准。',
-          '若已经把 NS 委派到 Cloudflare，续期仍在 DNSHE 完成；动态 IP 不要再指望 DNSHE 自带的 DDNS。',
-        ],
-      },
-      {
-        type: 'p',
-        parts: [
-          '部分根域名不支持托管到 Cloudflare。如果下一步就是接 Cloudflare，注册前先看控制台提示。接到 Cloudflare 时选择「连接域名」和免费计划，把页面给出的两个 Nameserver 填回 DNSHE 的 DNS 服务器设置，再回到 Cloudflare 确认已更新。',
-        ],
-      },
-      { type: 'h2', text: '常见记录' },
-      {
-        type: 'table',
-        headers: ['类型', '典型用途'],
-        rows: [
-          ['A', '把主机名指到 IPv4'],
-          ['AAAA', '把主机名指到 IPv6'],
-          ['CNAME', '把 www 指到另一个主机名'],
-          ['MX', '收信'],
-          ['TXT', '所有权验证、SPF、证书申请'],
-        ],
-      },
-      {
-        type: 'p',
-        parts: [
-          '刚接上站点、源站证书还没配对时，可以先用 Cloudflare 的灰色云（仅 DNS）确认解析通了，再决定是否打开橙色云代理。',
-        ],
-      },
-    ],
-  },
-  {
-    slug: 'oqumail-free-domain-email-guide',
-    kind: 'excerpt',
-    title: 'OquMail：在已有域名上建邮箱',
-    description:
-      '整理 OquMail 的免费额度、DNS 绑定方式和创建邮箱的顺序。域名不必转到 OquMail。完整图文步骤在 Zhen Invest。',
-    updatedAt: '2026-09-17',
-    fullUrl: 'https://zheninvest.com/tutorials/oqumail-free-domain-email-guide',
-    blocks: [
-      {
-        type: 'p',
-        parts: [
-          'OquMail 解决的是「已经有域名，想尽快拥有 you@yourdomain.com」。域名可以继续放在原来的注册商或 Cloudflare，按引导添加 MX、SPF、DKIM、DMARC。配额和客户端能力会变，以 ',
-          { text: 'OquMail 官网', href: 'https://oqumail.com' },
-          ' 和控制台为准。',
-        ],
-      },
-      { type: 'h2', text: '免费额度（以定价页为准）' },
-      {
-        type: 'table',
-        headers: ['项目', '常见说明'],
-        rows: [
-          ['免费邮箱数', '每个 workspace 大约 15 个'],
-          ['自定义域名', '大约 3 个'],
-          ['单箱容量', '大约 5 GB'],
-          ['每日外发', '大约 250 封 / 邮箱，人工与 API 共用'],
-          ['超出部分', '额外邮箱大约 1 美元 / 月'],
-        ],
-      },
-      { type: 'h2', text: '适合谁' },
-      {
-        type: 'ul',
-        items: [
-          '已有域名，想用品牌后缀邮箱做对外联络',
-          '个人或小团队，邮箱数量在免费额度内',
-          '主要用网页端收发，或需要按邮箱维度的轻量发信 API',
-        ],
-      },
-      {
-        type: 'note',
-        text: '需要文档、网盘、会议同一套件时，看 Google Workspace 或 Zoho。大规模营销群发应使用专门的邮件服务。关键生产和资金相关邮件，不要只押在免费额度上。',
-      },
-      { type: 'h2', text: '绑定域名的顺序' },
-      {
-        type: 'ul',
-        items: [
-          '准备一个你能改 DNS 的域名，以及一个可收信的注册邮箱。DNS 生效可能要数分钟到数小时。',
-          '在官网注册并登录，进入 Domains，填入根域名（不要填邮箱地址），确认你能管理这块域名的 DNS。',
-          '域名若托管在 Cloudflare，可以用 Connect with Cloudflare 授权后由对方写入记录。域名在别处，就把弹窗里的 TXT、MX 等记录逐条加到现有 DNS 面板。',
-          '全部加完后做 Verify DNS。Ownership、MX、SPF、DKIM、DMARC 都显示 Found，再创建邮箱。',
-          '在 Users & Mailboxes 里添加用户，用邀请邮件设置密码，然后用新地址给自己发一封测试信。',
-        ],
-      },
-      {
-        type: 'p',
-        parts: [
-          '不必把 Nameserver 改到 OquMail。域名上如果还留着旧邮箱的 MX，可能造成信件分路，切换前先确认旧服务可以下线。',
-        ],
-      },
-      { type: 'h2', text: '第三方客户端' },
-      {
-        type: 'p',
-        parts: [
-          '官网文案仍可能写以 Webmail 为主、暂不支持桌面客户端。控制台里有 Connect to app (IMAP)，会列出收信服务器和端口。实测 Outlook 在 MX 已经指向 OquMail 时，往往只填邮箱和密码就能自动发现。其他客户端以你当时的实测为准。',
-        ],
-      },
-    ],
-  },
-  {
-    slug: 'google-workspace-domain-guide',
-    kind: 'excerpt',
-    title: '长期持有 .com：Workspace 与 Cloudflare Registrar',
-    description:
-      '比较 Google Workspace 购域和 Cloudflare Registrar 各自解决的问题。区域定价、账单与下单步骤不在本页展开，全文在 Zhen Invest。',
-    updatedAt: '2026-09-08',
-    fullUrl: 'https://zheninvest.com/tutorials/google-workspace-domain-guide',
-    blocks: [
-      {
-        type: 'p',
-        parts: [
-          '很多注册商用「首年特价、次年涨价」卖域名。要长期持有 .com，真正要看的是续费价，不是结账页上的首年数字。',
-        ],
-      },
-      { type: 'h2', text: '两条都能拿到正规顶级域名' },
-      {
-        type: 'table',
-        headers: ['路径', '更适合的情况'],
-        rows: [
-          ['Cloudflare Registrar', '希望流程直接、续费按成本价风格公开，少处理账号和结算地区'],
-          ['Google Workspace 开通流程里的购域', '开通时一并购买自定义域名；不需要协作套件时，可以取消 Workspace 订阅，只保留域名年费'],
-        ],
-      },
-      {
-        type: 'p',
-        parts: [
-          '域名本身仍是正规顶级域名。Workspace 这条路径里，社区还讨论过用特定地区的结算货币拿到更低年费。那是社区实测，不是对所有人、所有时刻的保证，下单前要自己看结账页上的货币和金额。',
-        ],
-      },
-      {
-        type: 'note',
-        text: '本页不写地区切换、账单地址和支付步骤。这些内容、界面变化和风险说明在 Zhen Invest 的全文里。结账页如果不是你预期的货币，就不要下单。',
-      },
-      { type: 'h2', text: '和本站另外两篇怎么配合' },
-      {
-        type: 'ul',
-        items: [
-          '还没有可长期持有的域名、只想先有一个能解析的名字：先看 DNSHE 节选。',
-          '已经有域名、只想要 you@yourdomain.com：看 OquMail 节选。邮箱 DNS 可以加在 Cloudflare 上。',
-          '域名注册在 Workspace 流程里之后，后续 CDN 和解析仍然可以接到 Cloudflare，不必把网站主机放在 Google。',
-        ],
-      },
-    ],
-  },
+  googleWorkspaceDomainGuide,
+  spaceshipXyzDomainGuide,
+  cloudflareFreeStackGuide,
+  dnsheFreeDomainGuide,
+  oqumailFreeDomainEmailGuide,
 ]
 
 export function findGuide(slug: string, kind?: GuideKind): Guide | undefined {

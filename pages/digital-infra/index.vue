@@ -3,17 +3,17 @@ import { infraEntries } from '~/data/entries'
 
 usePageSeo({
   title: '基建服务',
-  description: 'DNSHE、Google Workspace 与 OquMail 的官网入口与说明。完整图文在 Zhen Invest。',
+  description: 'Google Workspace、Spaceship、Cloudflare、DNSHE 与 OquMail 的官网入口与图文教程。',
   path: '/digital-infra',
 })
 </script>
 
 <template>
   <div>
-    <p class="text-sm text-moss">数字基建</p>
+    <p class="text-sm text-moss">建站攻略</p>
     <h1 class="mt-2 text-3xl font-semibold tracking-tight">基建服务</h1>
     <p class="mt-4 leading-8 text-stone-700">
-      域名与邮箱相关基建服务的官网入口。下面是各服务的说明摘要，完整图文在 Zhen Invest。
+      域名、邮箱与免费建站相关基建服务的官网入口，以及对应图文教程。
     </p>
     <ul class="mt-8 space-y-4">
       <li
@@ -35,9 +35,6 @@ usePageSeo({
         </div>
         <p class="mt-2 leading-7 text-stone-700">{{ entry.description }}</p>
         <div class="mt-3 flex flex-wrap gap-4 text-sm">
-          <a :href="entry.url" target="_blank" rel="noopener noreferrer" class="text-moss hover:underline">
-            官方网站
-          </a>
           <NuxtLink
             v-if="entry.guideSlug"
             :to="`/digital-infra/${entry.guideSlug}`"
@@ -45,6 +42,14 @@ usePageSeo({
           >
             {{ entry.guideLabel }}
           </NuxtLink>
+          <a
+            :href="entry.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-stone-500 hover:text-stone-700 hover:underline"
+          >
+            官方网站
+          </a>
         </div>
       </li>
     </ul>

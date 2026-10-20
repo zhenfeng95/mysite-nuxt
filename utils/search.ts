@@ -22,14 +22,14 @@ interface IndexedItem extends SearchResult {
 const GROUP_LABEL: Record<SearchResultGroup, string> = {
     page: '页面',
     guide: '网站部署',
-    service: '数字基建',
+    service: '建站攻略',
 };
 
 const GROUP_ORDER: SearchResultGroup[] = ['page', 'guide', 'service'];
 
 const KIND_LABEL = {
     steps: '部署步骤',
-    excerpt: '基建说明',
+    excerpt: '基建教程',
 } as const;
 
 function normalize(value: string) {
@@ -60,7 +60,13 @@ function blockText(block: Block) {
             return block.text;
         case 'ul':
         case 'ol':
-            return block.items.join(' ');
+            return block.items
+                .map(item =>
+                    typeof item === 'string'
+                        ? item
+                        : item.map(part => (typeof part === 'string' ? part : part.text)).join(''),
+                )
+                .join(' ');
         case 'code':
             return block.text;
         case 'img':
@@ -103,10 +109,28 @@ function buildIndex(): IndexedItem[] {
             id: 'page-infra',
             group: 'page',
             groupLabel: GROUP_LABEL.page,
-            title: '数字基建',
-            description: '域名与邮箱相关的基建服务',
+            title: '建站攻略',
+            description: '域名、邮箱与免费建站相关服务与教程',
             to: '/digital-infra',
-            haystack: buildHaystack('数字基建', '官网', '服务', '域名', '邮箱'),
+            haystack: buildHaystack('建站攻略', '数字基建', '官网', '服务', '域名', '邮箱', 'Cloudflare'),
+        },
+        {
+            id: 'page-about',
+            group: 'page',
+            groupLabel: GROUP_LABEL.page,
+            title: '关于我们',
+            description: '站点定位与内容边界',
+            to: '/about',
+            haystack: buildHaystack('关于我们', '关于', '真途', '站长'),
+        },
+        {
+            id: 'page-contact',
+            group: 'page',
+            groupLabel: GROUP_LABEL.page,
+            title: '联系我们',
+            description: '反馈勘误与站点相关问题',
+            to: '/contact',
+            haystack: buildHaystack('联系我们', '联系', '邮箱', '反馈', '勘误'),
         },
     ];
 

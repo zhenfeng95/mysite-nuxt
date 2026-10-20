@@ -45,9 +45,8 @@ export default defineNuxtConfig({
         // All content routes are static HTML at build time → Vercel CDN HIT
         '/**': { prerender: true },
 
-        '/about': { redirect: { to: '/', statusCode: 301 } },
         '/project': { redirect: { to: '/', statusCode: 301 } },
-        '/message': { redirect: { to: '/', statusCode: 301 } },
+        '/message': { redirect: { to: '/contact', statusCode: 301 } },
         '/article': { redirect: { to: '/guides', statusCode: 301 } },
         '/article/**': { redirect: { to: '/guides', statusCode: 301 } },
         '/guides/dnshe-free-domain-guide': {

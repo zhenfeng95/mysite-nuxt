@@ -132,26 +132,9 @@ html.dark .search-active {
 }
 
 .home-glow {
-  display: none;
-}
-
-html.dark .home-glow {
-  display: block;
   background:
     radial-gradient(ellipse at 50% 42%, rgba(90, 114, 148, 0.32), transparent 58%),
     radial-gradient(ellipse at 82% 100%, rgba(110, 74, 24, 0.38), transparent 48%);
-}
-
-.home-wave {
-  stroke: rgb(28 25 21 / 0.16);
-}
-
-html.dark .home-wave {
-  stroke: rgb(255 255 255 / 0.14);
-}
-
-.home-wave-gold {
-  stroke: rgb(232 180 35 / 0.55);
 }
 
 .theme-sun {
@@ -166,33 +149,21 @@ html.dark .theme-sun {
   display: block;
 }
 
-.home-copy {
+.home-hero {
   background-color: #2a303a;
   color: #f4f1ea;
 }
 
-.home-copy [class~='text-ink'],
-.home-copy [class~='hover:text-ink']:hover {
+.home-hero [class~='text-ink'],
+.home-hero [class~='hover:text-ink']:hover {
   color: #f4f1ea;
 }
 
-.home-copy [class~='text-stone-600'],
-.home-copy [class~='text-stone-500'] {
+.home-hero [class~='text-stone-600'],
+.home-hero [class~='text-stone-500'] {
   color: #c8c4bb;
 }
 
-.home-copy [class~='text-moss'] {
+.home-hero [class~='text-moss'] {
   color: #9dccb4;
-}
-
-.home-copy [class~='border-stone-400'] {
-  border-color: rgb(255 255 255 / 0.35);
-}
-
-.home-copy [class~='hover:border-ink']:hover {
-  border-color: #f4f1ea;
-}
-
-.home-screen .home-wave {
-  stroke: rgb(255 255 255 / 0.16);
 }

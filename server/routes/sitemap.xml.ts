@@ -12,6 +12,8 @@ export default defineEventHandler((event) => {
     { path: '/', lastmod: siteUpdatedAt },
     { path: '/digital-infra', lastmod: siteUpdatedAt },
     { path: '/guides', lastmod: siteUpdatedAt },
+    { path: '/about', lastmod: siteUpdatedAt },
+    { path: '/contact', lastmod: siteUpdatedAt },
     ...guides.map(guide => ({
       path: guidePath(guide),
       lastmod: guide.updatedAt,

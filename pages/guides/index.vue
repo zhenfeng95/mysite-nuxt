@@ -15,7 +15,7 @@ const stepGuides = guides.filter(guide => guide.kind === 'steps')
     <p class="text-sm text-moss">网站部署</p>
     <h1 class="mt-2 text-3xl font-semibold tracking-tight">部署步骤</h1>
     <p class="mt-4 leading-8 text-stone-700">
-      网站怎么跑起来、怎么从 GitHub 更新、怎么申请证书。域名与邮箱相关的基建服务在数字基建页。
+      网站怎么跑起来、怎么从 GitHub 更新、怎么申请证书。域名、邮箱与免费建站相关内容在建站攻略页。
     </p>
     <ul class="mt-10 space-y-4">
       <li v-for="guide in stepGuides" :key="guide.slug">
