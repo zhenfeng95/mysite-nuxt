@@ -10,6 +10,12 @@ usePageSeo({
   description: SITE_DESCRIPTION,
   path: '/',
 })
+
+const InternalLink = resolveComponent('NuxtLink')
+
+function isExternal(href: string) {
+  return href.startsWith('http')
+}
 </script>
 
 <template>
@@ -29,22 +35,24 @@ usePageSeo({
       </div>
     </section>
 
-    <div class="mx-auto w-full max-w-md px-5 py-10 text-center">
+    <div class="mx-auto w-full max-w-xl px-5 py-10 text-center">
       <p class="text-xs tracking-wide text-stone-400">
         更多入口
       </p>
-      <div class="mt-3 flex flex-wrap items-stretch justify-center gap-x-8 gap-y-4">
-        <a
+      <div class="mt-3 flex flex-wrap items-stretch justify-center gap-x-6 gap-y-4 sm:gap-x-8">
+        <component
+          :is="isExternal(site.href) ? 'a' : InternalLink"
           v-for="site in SISTER_SITES"
           :key="site.href"
-          :href="site.href"
-          target="_blank"
-          rel="noopener noreferrer"
+          v-bind="isExternal(site.href)
+            ? { href: site.href, target: '_blank', rel: 'noopener noreferrer' }
+            : { to: site.href }"
           class="group inline-flex flex-col items-center gap-0.5 text-sm text-ink transition hover:text-gold"
         >
           <span class="inline-flex items-center gap-1 font-medium">
             {{ site.name }}
             <svg
+              v-if="isExternal(site.href)"
               class="h-3.5 w-3.5 text-stone-400 transition group-hover:text-gold"
               viewBox="0 0 24 24"
               fill="none"
@@ -58,7 +66,7 @@ usePageSeo({
           <span class="text-xs text-stone-400 transition group-hover:text-stone-500">
             {{ site.blurb }}
           </span>
-        </a>
+        </component>
       </div>
     </div>
   </div>

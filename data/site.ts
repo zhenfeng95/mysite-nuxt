@@ -4,6 +4,9 @@ export const FULL_SITE_NAME = 'Zhen Invest';
 export const FULL_SITE_URL = 'https://zheninvest.com';
 export const NAV_SITE_NAME = '真途导航';
 export const NAV_SITE_URL = 'https://nav.zhenvia.com';
+/** 副业变现入口（任推邦邀请注册） */
+export const SIDE_HUSTLE_URL =
+  'https://tg.bd.cn/#/pages/login/register?invite_code=7249130&qd=self_team_android';
 export const SITE_CONTACT_EMAIL = 'contact@zhenvia.com';
 
 /** 首页姐妹站入口（外链） */

@@ -36,12 +36,12 @@ export default defineNuxtConfig({
         public: {
             siteUrl: 'https://zhenvia.com',
             siteName: '真途',
-            la51Id: '3RIe6jordcKGveLo',
-            la51Ck: '3RIe6jordcKGveLo',
         },
     },
 
     routeRules: {
+        // Geo must stay a live function so Vercel can set x-vercel-ip-country per request.
+        '/api/geo': { prerender: false },
         // All content routes are static HTML at build time → Vercel CDN HIT
         '/**': { prerender: true },
 
@@ -64,6 +64,7 @@ export default defineNuxtConfig({
         prerender: {
             crawlLinks: true,
             routes: ['/', '/sitemap.xml', '/robots.txt'],
+            ignore: ['/api/geo'],
         },
     },
 

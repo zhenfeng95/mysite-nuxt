@@ -1,8 +1,8 @@
 import type { Block } from '~/data/guides';
 import { guidePath, guides } from '~/data/guides';
-import { infraEntries } from '~/data/entries';
+import { infraGroups } from '~/data/entries';
 
-export type SearchResultGroup = 'page' | 'guide' | 'service';
+export type SearchResultGroup = 'page' | 'guide' | 'service' | 'side';
 
 export interface SearchResult {
     id: string;
@@ -23,14 +23,26 @@ const GROUP_LABEL: Record<SearchResultGroup, string> = {
     page: '页面',
     guide: '网站部署',
     service: '建站攻略',
+    side: '副业变现',
 };
 
-const GROUP_ORDER: SearchResultGroup[] = ['page', 'guide', 'service'];
+const GROUP_ORDER: SearchResultGroup[] = ['page', 'guide', 'service', 'side'];
 
 const KIND_LABEL = {
     steps: '部署步骤',
     excerpt: '基建教程',
+    side: '副业教程',
 } as const;
+
+function guideSearchGroup(kind: keyof typeof KIND_LABEL): SearchResultGroup {
+    if (kind === 'excerpt') {
+        return 'service';
+    }
+    if (kind === 'side') {
+        return 'side';
+    }
+    return 'guide';
+}
 
 function normalize(value: string) {
     return value.trim().toLowerCase();
@@ -136,8 +148,8 @@ function buildIndex(): IndexedItem[] {
 
     const guideItems: IndexedItem[] = guides.map(guide => ({
         id: `guide-${guide.slug}`,
-        group: guide.kind === 'excerpt' ? 'service' : 'guide',
-        groupLabel: guide.kind === 'excerpt' ? GROUP_LABEL.service : GROUP_LABEL.guide,
+        group: guideSearchGroup(guide.kind),
+        groupLabel: GROUP_LABEL[guideSearchGroup(guide.kind)],
         title: guide.title,
         description: guide.description,
         to: guidePath(guide),
@@ -145,16 +157,18 @@ function buildIndex(): IndexedItem[] {
         haystack: buildHaystack(guide.title, guide.description, guide.slug, KIND_LABEL[guide.kind], guide.blocks.map(blockText)),
     }));
 
-    const services: IndexedItem[] = infraEntries.map(entry => ({
-        id: `service-${entry.id}`,
-        group: 'service',
-        groupLabel: GROUP_LABEL.service,
-        title: entry.name,
-        description: entry.description,
-        href: entry.url,
-        meta: '官方网站',
-        haystack: buildHaystack(entry.name, entry.description, entry.tags, entry.url),
-    }));
+    const services: IndexedItem[] = infraGroups.flatMap(section =>
+        section.entries.map(entry => ({
+            id: `service-${entry.id}`,
+            group: 'service' as const,
+            groupLabel: GROUP_LABEL.service,
+            title: entry.name,
+            description: entry.description,
+            href: entry.url,
+            meta: section.title,
+            haystack: buildHaystack(section.title, entry.name, entry.description, entry.tags, entry.url),
+        })),
+    );
 
     return [...pages, ...guideItems, ...services];
 }

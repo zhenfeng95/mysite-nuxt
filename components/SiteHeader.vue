@@ -9,6 +9,7 @@ const links = [
   { to: '/', label: '首页' },
   { to: '/digital-infra', label: '建站攻略' },
   { to: '/guides', label: '网站部署' },
+  { to: '/side-hustle', label: '副业变现' },
 ]
 
 function isActive(path: string) {
@@ -58,7 +59,7 @@ function closeMenu() {
   <header
     class="site-header sticky top-0 z-30 border-b border-stone-300/80 backdrop-blur-md"
   >
-    <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
+    <div class="mx-auto flex max-w-[72rem] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
       <NuxtLink to="/" class="flex items-center gap-2 text-lg font-semibold tracking-tight text-ink">
         <img src="/logo.png" alt="" width="32" height="32" class="h-8 w-8">
         {{ SITE_NAME }}
@@ -123,7 +124,7 @@ function closeMenu() {
           @click="closeMenu"
         />
         <nav
-          class="absolute inset-x-0 top-[4.25rem] mx-auto max-w-3xl px-5"
+          class="absolute inset-x-0 top-[4.25rem] mx-auto max-w-[72rem] px-4 sm:px-6 lg:px-8"
           aria-label="移动端导航"
         >
           <div class="overflow-hidden rounded-2xl border border-stone-300/80 bg-paper shadow-lg">

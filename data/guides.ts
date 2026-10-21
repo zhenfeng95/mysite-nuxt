@@ -2,6 +2,7 @@ import { cloudflareFreeStackGuide } from '~/data/tutorials/cloudflare-free-stack
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import { oqumailFreeDomainEmailGuide } from '~/data/tutorials/oqumail-free-domain-email-guide'
+import { rentuibangGuide } from '~/data/tutorials/rentuibang-guide'
 import { spaceshipXyzDomainGuide } from '~/data/tutorials/spaceship-xyz-domain-guide'
 
 
@@ -16,11 +17,12 @@ export type Block =
   | { type: 'ol'; items: Array<string | TextPart[]> }
   | { type: 'quote'; parts: TextPart[] }
   | { type: 'code'; lang?: string; text: string }
-  | { type: 'img'; src: string; alt: string }
+  | { type: 'img'; src: string; alt: string; fit?: 'intrinsic' }
+  | { type: 'imgs'; items: Array<{ src: string; alt: string }> }
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'note'; text: string }
 
-export type GuideKind = 'steps' | 'excerpt'
+export type GuideKind = 'steps' | 'excerpt' | 'side'
 
 export interface Guide {
   slug: string
@@ -831,6 +833,7 @@ export const guides: Guide[] = [
   cloudflareFreeStackGuide,
   dnsheFreeDomainGuide,
   oqumailFreeDomainEmailGuide,
+  rentuibangGuide,
 ]
 
 export function findGuide(slug: string, kind?: GuideKind): Guide | undefined {
@@ -845,5 +848,11 @@ export function findGuide(slug: string, kind?: GuideKind): Guide | undefined {
 }
 
 export function guidePath(guide: Pick<Guide, 'slug' | 'kind'>) {
-  return guide.kind === 'excerpt' ? `/digital-infra/${guide.slug}` : `/guides/${guide.slug}`
+  if (guide.kind === 'excerpt') {
+    return `/digital-infra/${guide.slug}`
+  }
+  if (guide.kind === 'side') {
+    return '/side-hustle'
+  }
+  return `/guides/${guide.slug}`
 }

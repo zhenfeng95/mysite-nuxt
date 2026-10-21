@@ -17,11 +17,11 @@ const stepGuides = guides.filter(guide => guide.kind === 'steps')
     <p class="mt-4 leading-8 text-stone-700">
       网站怎么跑起来、怎么从 GitHub 更新、怎么申请证书。域名、邮箱与免费建站相关内容在建站攻略页。
     </p>
-    <ul class="mt-10 space-y-4">
-      <li v-for="guide in stepGuides" :key="guide.slug">
+    <ul class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <li v-for="guide in stepGuides" :key="guide.slug" class="h-full">
         <NuxtLink
           :to="`/guides/${guide.slug}`"
-          class="block rounded-2xl border border-stone-300/80 bg-white/60 px-5 py-4 transition hover:border-moss/50"
+          class="block h-full rounded-2xl border border-stone-300/80 bg-white/60 px-5 py-4 transition hover:border-moss/50"
         >
           <p class="text-xs text-stone-500">更新于 {{ guide.updatedAt }}</p>
           <p class="mt-1 font-semibold">{{ guide.title }}</p>

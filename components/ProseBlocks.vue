@@ -137,9 +137,23 @@ onBeforeUnmount(() => {
         v-else-if="block.type === 'img'"
         :src="block.src"
         :alt="block.alt"
-        class="w-full rounded-xl border border-stone-300/80"
+        class="rounded-xl border border-stone-300/80"
+        :class="block.fit === 'intrinsic' ? 'mx-auto h-auto w-auto max-w-full' : 'w-full'"
         loading="lazy"
       />
+      <div
+        v-else-if="block.type === 'imgs'"
+        class="grid grid-cols-3 gap-2 sm:gap-3"
+      >
+        <img
+          v-for="item in block.items"
+          :key="item.src"
+          :src="item.src"
+          :alt="item.alt"
+          class="w-full rounded-xl border border-stone-300/80"
+          loading="lazy"
+        />
+      </div>
       <div v-else-if="block.type === 'table'" class="overflow-x-auto">
         <table class="w-full border-collapse text-left text-base">
           <thead>
