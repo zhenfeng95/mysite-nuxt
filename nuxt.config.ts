@@ -42,6 +42,11 @@ export default defineNuxtConfig({
     routeRules: {
         // Geo must stay a live function so Vercel can set x-vercel-ip-country per request.
         '/api/geo': { prerender: false },
+        // DNS / domain lookup hit live resolvers; must stay dynamic.
+        '/api/dns': { prerender: false },
+        '/api/domain': { prerender: false },
+        '/api/ping': { prerender: false },
+        '/api/ip': { prerender: false },
         // All content routes are static HTML at build time → Vercel CDN HIT
         '/**': { prerender: true },
 
@@ -63,8 +68,16 @@ export default defineNuxtConfig({
     nitro: {
         prerender: {
             crawlLinks: true,
-            routes: ['/', '/sitemap.xml', '/robots.txt'],
-            ignore: ['/api/geo'],
+            routes: [
+                '/',
+                '/about',
+                '/contact',
+                '/tools',
+                '/side-hustle',
+                '/sitemap.xml',
+                '/robots.txt',
+            ],
+            ignore: ['/api/geo', '/api/dns', '/api/domain', '/api/ping', '/api/ip'],
         },
     },
 

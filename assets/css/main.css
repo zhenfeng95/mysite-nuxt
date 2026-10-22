@@ -55,7 +55,8 @@ html.dark [class~='bg-paper/90'] {
 
 html.dark [class~='bg-white/60'],
 html.dark [class~='bg-white/70'],
-html.dark [class~='bg-stone-200/70'] {
+html.dark [class~='bg-stone-200/70'],
+html.dark [class~='bg-stone-200/40'] {
   background-color: rgb(255 255 255 / 0.06);
 }
 
@@ -166,4 +167,19 @@ html.dark .theme-sun {
 
 .home-hero [class~='text-moss'] {
   color: #9dccb4;
+}
+
+/* 放在 layer 外，避免被 Tailwind px-* 盖掉右侧内边距导致文字压箭头 */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2378716c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 0.85rem;
+  padding-right: 2.35rem;
+}
+
+html.dark select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23a8a29e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
 }

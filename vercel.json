@@ -17,9 +17,8 @@
     { "source": "/favicon.ico", "destination": "/logo.png" }
   ],
   "redirects": [
-    { "source": "/about", "destination": "/", "permanent": true },
     { "source": "/project", "destination": "/", "permanent": true },
-    { "source": "/message", "destination": "/", "permanent": true },
+    { "source": "/message", "destination": "/contact", "permanent": true },
     { "source": "/article", "destination": "/guides", "permanent": true },
     { "source": "/article/:path*", "destination": "/guides", "permanent": true },
     {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { findGuide } from '~/data/guides'
-import { SITE_NAME, SITE_URL } from '~/data/site'
+import { articleLd, breadcrumbLd } from '~/utils/jsonLd'
 
 const route = useRoute()
 const slug = String(route.params.slug || '')
@@ -18,31 +18,24 @@ usePageSeo({
   path,
 })
 
-const origin = SITE_URL.replace(/\/$/, '')
-const pageUrl = `${origin}${path}`
-const publisher = {
-  '@type': 'Organization',
-  name: SITE_NAME,
-  url: origin,
-}
-
 useHead({
   script: [
     {
       type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        headline: guide.title,
+      innerHTML: JSON.stringify(articleLd({
+        title: guide.title,
         description: guide.description,
-        datePublished: guide.updatedAt,
+        path,
         dateModified: guide.updatedAt,
-        inLanguage: 'zh-CN',
-        url: pageUrl,
-        mainEntityOfPage: pageUrl,
-        author: publisher,
-        publisher,
-      }),
+      })),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(breadcrumbLd([
+        { name: '首页', path: '/' },
+        { name: '建站攻略', path: '/digital-infra' },
+        { name: guide.title, path },
+      ])),
     },
   ],
 })

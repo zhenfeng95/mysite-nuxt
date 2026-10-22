@@ -9,6 +9,7 @@ const links = [
   { to: '/', label: '首页' },
   { to: '/digital-infra', label: '建站攻略' },
   { to: '/guides', label: '网站部署' },
+  { to: '/tools', label: '实用工具' },
   { to: '/side-hustle', label: '副业变现' },
 ]
 
@@ -60,9 +61,9 @@ function closeMenu() {
     class="site-header sticky top-0 z-30 border-b border-stone-300/80 backdrop-blur-md"
   >
     <div class="mx-auto flex max-w-[72rem] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-      <NuxtLink to="/" class="flex items-center gap-2 text-lg font-semibold tracking-tight text-ink">
-        <img src="/logo.png" alt="" width="32" height="32" class="h-8 w-8">
-        {{ SITE_NAME }}
+      <NuxtLink to="/" class="inline-flex items-center gap-2 text-lg font-semibold leading-none tracking-tight text-ink">
+        <img src="/logo.png" alt="" width="32" height="32" class="block h-8 w-8 shrink-0 object-contain">
+        <span class="leading-none">{{ SITE_NAME }}</span>
       </NuxtLink>
 
       <div class="flex items-center gap-2.5 sm:gap-5">
