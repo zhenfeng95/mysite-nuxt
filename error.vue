@@ -5,6 +5,7 @@ const error = useError()
 
 usePageSeo({
   title: '页面不存在',
+  seoTitle: '页面不存在：这个地址没有对应的笔记',
   description: '这个地址没有对应的笔记。',
   path: '/404',
   noindex: true,

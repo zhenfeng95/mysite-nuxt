@@ -29,7 +29,7 @@ export default defineEventHandler((event) => {
     })),
   ]
 
-  // Deduplicate (side-hustle appears via guidePath and static list)
+  // Deduplicate hubs that also appear via guidePath / tools
   const seen = new Set<string>()
   const unique = urls.filter(({ path }) => {
     if (seen.has(path)) {

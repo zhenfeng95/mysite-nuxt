@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { guidePath, guides, type GuideKind } from '~/data/guides';
-import { SITE_DESCRIPTION, SITE_NAME, SITE_SLOGAN, SISTER_SITES } from '~/data/site';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_SLOGAN } from '~/data/site';
 import { websiteLd } from '~/utils/jsonLd';
 
 definePageMeta({
@@ -22,8 +22,6 @@ useHead({
     ],
 });
 
-const InternalLink = resolveComponent('NuxtLink');
-
 const kindLabel: Record<GuideKind, string> = {
     steps: '网站部署',
     excerpt: '建站攻略',
@@ -31,10 +29,6 @@ const kindLabel: Record<GuideKind, string> = {
 };
 
 const recentGuides = [...guides].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).slice(0, 3);
-
-function isExternal(href: string) {
-    return href.startsWith('http');
-}
 </script>
 
 <template>
@@ -43,14 +37,14 @@ function isExternal(href: string) {
             <div class="home-glow pointer-events-none absolute inset-0" />
             <div class="relative z-10 w-full max-w-3xl text-center">
                 <h1 class="font-serif text-6xl leading-none tracking-tight sm:text-7xl md:text-8xl">
-                    <span class="block text-ink">{{ SITE_NAME }}</span>
+                    <span class="home-hero-rise home-hero-rise--1 block text-ink">{{ SITE_NAME }}</span>
                     <span
-                        class="mt-3 block font-sans text-xl font-normal italic leading-snug tracking-normal text-gold sm:text-2xl md:text-3xl"
+                        class="home-hero-rise home-hero-rise--2 mt-3 block font-sans text-xl font-normal italic leading-snug tracking-normal text-gold sm:text-2xl md:text-3xl"
                     >
                         {{ SITE_SLOGAN }}
                     </span>
                 </h1>
-                <p class="mx-auto mt-8 max-w-xl text-sm leading-7 text-stone-500 sm:text-base">
+                <p class="home-hero-rise home-hero-rise--3 mx-auto mt-8 max-w-xl text-sm leading-7 text-stone-500 sm:text-base">
                     个人维护的建站笔记：
                     <NuxtLink
                         to="/digital-infra"
@@ -103,36 +97,5 @@ function isExternal(href: string) {
                 </li>
             </ul>
         </section>
-
-        <div class="mx-auto w-full max-w-[72rem] border-t border-dashed border-stone-300/80 px-4 pb-14 pt-10 text-center sm:px-6 lg:px-8">
-            <p class="text-xs tracking-wide text-stone-400">更多入口</p>
-            <div class="mt-3 flex flex-wrap items-stretch justify-center gap-x-6 gap-y-4 sm:gap-x-8">
-                <component
-                    :is="isExternal(site.href) ? 'a' : InternalLink"
-                    v-for="site in SISTER_SITES"
-                    :key="site.href"
-                    v-bind="isExternal(site.href) ? { href: site.href, target: '_blank', rel: 'noopener noreferrer' } : { to: site.href }"
-                    class="group inline-flex flex-col items-center gap-0.5 text-sm text-ink transition hover:text-gold"
-                >
-                    <span class="inline-flex items-center gap-1 font-medium">
-                        {{ site.name }}
-                        <svg
-                            v-if="isExternal(site.href)"
-                            class="h-3.5 w-3.5 text-stone-400 transition group-hover:text-gold"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            aria-hidden="true"
-                        >
-                            <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </span>
-                    <span class="text-xs text-stone-400 transition group-hover:text-stone-500">
-                        {{ site.blurb }}
-                    </span>
-                </component>
-            </div>
-        </div>
     </div>
 </template>

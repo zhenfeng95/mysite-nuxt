@@ -1,17 +1,52 @@
 <script setup lang="ts">
-import { infraGroups } from '~/data/entries'
+import { infraEntries, infraGroups } from '~/data/entries'
+import { breadcrumbLd, itemListLd } from '~/utils/jsonLd'
+
+const title = '建站攻略'
+const seoTitle = '建站攻略：域名、邮箱与 Cloudflare 等服务教程'
+const description =
+  '按域名、邮箱、建站分类整理 Google Workspace、Spaceship、DNSHE、OquMail 与 Cloudflare 的官网入口和图文教程。'
+const path = '/digital-infra'
 
 usePageSeo({
-  title: '基建服务',
-  description: '按域名、邮箱、建站分类整理 Google Workspace、Spaceship、DNSHE、OquMail 与 Cloudflare 的官网入口和图文教程。',
-  path: '/digital-infra',
+  title,
+  seoTitle,
+  description,
+  path,
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(itemListLd({
+        name: title,
+        description,
+        path,
+        items: infraEntries
+          .filter(entry => entry.guideSlug)
+          .map(entry => ({
+            name: entry.name,
+            path: `/digital-infra/${entry.guideSlug}`,
+            description: entry.description,
+          })),
+      })),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(breadcrumbLd([
+        { name: '首页', path: '/' },
+        { name: title, path },
+      ])),
+    },
+  ],
 })
 </script>
 
 <template>
   <div>
     <p class="text-sm text-moss">建站攻略</p>
-    <h1 class="mt-2 text-3xl font-semibold tracking-tight">基建服务</h1>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">建站攻略</h1>
     <p class="mt-4 leading-8 text-stone-700">
       按域名、邮箱和建站分类，整理相关服务的官网入口和图文教程。
     </p>
@@ -29,7 +64,7 @@ usePageSeo({
         <li
           v-for="entry in group.entries"
           :key="entry.id"
-          class="rounded-2xl border border-stone-300/80 bg-white/60 px-5 py-4"
+          class="flex h-full flex-col rounded-2xl border border-stone-300/80 bg-white/60 px-5 py-4"
         >
           <div class="flex flex-wrap items-baseline justify-between gap-2">
             <h3 class="text-lg font-semibold">{{ entry.name }}</h3>
@@ -44,7 +79,7 @@ usePageSeo({
             </ul>
           </div>
           <p class="mt-2 leading-7 text-stone-700">{{ entry.description }}</p>
-          <div class="mt-3 flex flex-wrap gap-4 text-sm">
+          <div class="mt-auto flex flex-wrap gap-4 pt-3 text-sm">
             <NuxtLink
               v-if="entry.guideSlug"
               :to="`/digital-infra/${entry.guideSlug}`"

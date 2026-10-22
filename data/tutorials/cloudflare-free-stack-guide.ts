@@ -202,7 +202,7 @@ export const cloudflareFreeStackGuide = {
                 ['站内：', { text: 'Google Workspace 低价 .com 教程', href: '/digital-infra/google-workspace-domain-guide' }],
                 ['站内：', { text: 'DNSHE 免费域名', href: '/digital-infra/dnshe-free-domain-guide' }],
                 ['站内：', { text: 'OquMail 域名邮箱', href: '/digital-infra/oqumail-free-domain-email-guide' }],
-                ['站内：', { text: '网站部署步骤', href: '/guides' }],
+                ['站内：', { text: '网站部署', href: '/guides' }],
             ],
         },
         {

@@ -1,9 +1,5 @@
 <script setup lang="ts">
-usePageSeo({
-  title: '编解码与随机串',
-  description: 'Base64、URL 编解码，以及可配置字符集的随机字符串生成，适合处理链接、Token 与配置片段。',
-  path: '/tools/encode',
-})
+const tool = useToolSeo('encode')
 
 type Panel = 'base64' | 'url' | 'random'
 
@@ -166,7 +162,7 @@ const panels: Array<{ id: Panel; label: string }> = [
       <span class="mx-1.5 text-stone-400">/</span>
       编解码
     </p>
-    <h1 class="mt-2 text-3xl font-semibold tracking-tight">编解码与随机串</h1>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">{{ tool.title }}</h1>
     <p class="mt-4 max-w-3xl leading-8 text-stone-700">
       Base64、URL 编解码，以及可配置字符集的随机字符串。全程在浏览器本地完成，不会上传内容。
     </p>

@@ -1,9 +1,5 @@
 <script setup lang="ts">
-usePageSeo({
-  title: 'DNS 查询',
-  description: '查询域名 A / AAAA / CNAME / MX / TXT / NS / SOA 解析是否已生效，改完 Nameserver 或邮箱记录后可在此核对。',
-  path: '/tools/dns',
-})
+const tool = useToolSeo('dns')
 
 const LOOKUP_TYPES = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SOA'] as const
 
@@ -109,7 +105,7 @@ async function runLookup() {
       <span class="mx-1.5 text-stone-400">/</span>
       DNS
     </p>
-    <h1 class="mt-2 text-3xl font-semibold tracking-tight">DNS 查询</h1>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">{{ tool.title }}</h1>
     <p class="mt-4 max-w-3xl leading-8 text-stone-700">
       改完 Nameserver，或加完 A / MX / TXT 后，在这里核对解析是否已生效。支持粘贴带 https:// 的地址。解析经公共 DNS 查询，仅供参考。
     </p>

@@ -4,6 +4,10 @@ export function siteOrigin() {
   return SITE_URL.replace(/\/$/, '')
 }
 
+export function defaultOgImage() {
+  return `${siteOrigin()}/og-image.jpg`
+}
+
 export function organizationLd() {
   const origin = siteOrigin()
   return {
@@ -33,6 +37,7 @@ export function articleLd(input: {
   path: string
   dateModified: string
   datePublished?: string
+  image?: string
 }) {
   const origin = siteOrigin()
   const pageUrl = `${origin}${input.path}`
@@ -47,6 +52,7 @@ export function articleLd(input: {
     inLanguage: 'zh-CN',
     url: pageUrl,
     mainEntityOfPage: pageUrl,
+    image: input.image || defaultOgImage(),
     author: publisher,
     publisher,
   }
@@ -63,5 +69,54 @@ export function breadcrumbLd(items: Array<{ name: string; path: string }>) {
       name: item.name,
       item: item.path === '/' ? origin : `${origin}${item.path}`,
     })),
+  }
+}
+
+export function itemListLd(input: {
+  name: string
+  description: string
+  path: string
+  items: Array<{ name: string; path: string; description?: string }>
+}) {
+  const origin = siteOrigin()
+  const pageUrl = `${origin}${input.path}`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: input.name,
+    description: input.description,
+    url: pageUrl,
+    numberOfItems: input.items.length,
+    itemListElement: input.items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: `${origin}${item.path}`,
+      description: item.description,
+    })),
+  }
+}
+
+export function webApplicationLd(input: {
+  title: string
+  description: string
+  path: string
+}) {
+  const origin = siteOrigin()
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: input.title,
+    description: input.description,
+    url: `${origin}${input.path}`,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    inLanguage: 'zh-CN',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'CNY',
+    },
+    publisher: organizationLd(),
   }
 }

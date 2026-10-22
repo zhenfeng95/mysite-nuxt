@@ -1,9 +1,5 @@
 <script setup lang="ts">
-usePageSeo({
-  title: '在线 Ping',
-  description: '输入域名或 IP，从本站服务器探测连通性、延迟和丢包。无法发送 ICMP 时，改用 TCP 443 或 80 测量建连时间。',
-  path: '/tools/ping',
-})
+const tool = useToolSeo('ping')
 
 interface PingReply {
   seq: number
@@ -158,7 +154,7 @@ async function runPing() {
       <span class="mx-1.5 text-stone-400">/</span>
       Ping
     </p>
-    <h1 class="mt-2 text-3xl font-semibold tracking-tight">在线 Ping</h1>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">{{ tool.title }}</h1>
     <p class="mt-4 max-w-3xl leading-8 text-stone-700">
       输入域名或 IP，从本站服务器看它通不通、延迟多少、有没有丢包。支持粘贴带 https:// 的地址。
     </p>

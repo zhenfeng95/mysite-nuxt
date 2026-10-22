@@ -1,9 +1,5 @@
 <script setup lang="ts">
-usePageSeo({
-  title: '域名信息粗查',
-  description: '一次查看域名的注册信息（RDAP / WHOIS）与 A / MX / NS / TXT 等常用 DNS 解析，方便核对改 NS、加记录后是否生效。',
-  path: '/tools/domain',
-})
+const tool = useToolSeo('domain')
 
 interface DnsRecord {
   name: string
@@ -135,7 +131,7 @@ const dnsSections = computed(() => {
       <span class="mx-1.5 text-stone-400">/</span>
       域名粗查
     </p>
-    <h1 class="mt-2 text-3xl font-semibold tracking-tight">域名信息粗查</h1>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">{{ tool.title }}</h1>
     <p class="mt-4 max-w-3xl leading-8 text-stone-700">
       一次查看注册信息（经 RDAP，相当于现代 WHOIS）和常用 DNS 解析。适合改完 Nameserver、加完 MX / TXT 后做快速核对；隐私保护域名可能看不到持有人信息。
     </p>

@@ -1,9 +1,12 @@
 interface PageSeoInput {
+  /** Visible / H1-oriented short name; also used in breadcrumbs */
   title: string
   description: string
   path: string
+  /** Longer document title when `title` is too short for SEO; still gets `｜真途` */
+  seoTitle?: string
   noindex?: boolean
-  /** Absolute or site-root path; defaults to /og-image.png */
+  /** Absolute or site-root path; defaults to /og-image.jpg */
   image?: string
 }
 
@@ -12,13 +15,14 @@ export function usePageSeo(input: PageSeoInput) {
   const siteName = String(config.public.siteName || '真途')
   const origin = String(config.public.siteUrl).replace(/\/$/, '')
   const canonical = `${origin}${input.path === '/' ? '' : input.path}`
-  const branded = input.path === '/' ? input.title : `${input.title}｜${siteName}`
-  const imagePath = input.image || '/og-image.png'
+  const docTitle = input.seoTitle || input.title
+  const branded = input.path === '/' ? docTitle : `${docTitle}｜${siteName}`
+  const imagePath = input.image || '/og-image.jpg'
   const ogImage = imagePath.startsWith('http') ? imagePath : `${origin}${imagePath}`
   const isArticle =
     input.path.startsWith('/guides/')
     || input.path.startsWith('/digital-infra/')
-    || input.path === '/side-hustle'
+    || input.path.startsWith('/side-hustle/')
 
   useSeoMeta({
     title: branded,

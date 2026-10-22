@@ -852,7 +852,7 @@ export function guidePath(guide: Pick<Guide, 'slug' | 'kind'>) {
     return `/digital-infra/${guide.slug}`
   }
   if (guide.kind === 'side') {
-    return '/side-hustle'
+    return `/side-hustle/${guide.slug}`
   }
   return `/guides/${guide.slug}`
 }

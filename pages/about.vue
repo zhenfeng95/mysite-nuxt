@@ -3,6 +3,7 @@ import { FULL_SITE_NAME, FULL_SITE_URL, SITE_CONTACT_EMAIL, SITE_NAME, SITE_SLOG
 
 usePageSeo({
   title: '关于我们',
+  seoTitle: `关于${SITE_NAME}：站点定位与建站笔记内容边界`,
   description: `${SITE_NAME} 是个人技术笔记站点，整理网站部署与建站攻略：域名、邮箱、证书、Cloudflare 等实践路径。`,
   path: '/about',
 })

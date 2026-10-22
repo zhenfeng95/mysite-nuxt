@@ -3,6 +3,7 @@ import { SITE_CONTACT_EMAIL, SITE_NAME } from '~/data/site'
 
 usePageSeo({
   title: '联系我们',
+  seoTitle: `联系${SITE_NAME}：反馈勘误、失效链接与站点问题`,
   description: `通过公开邮箱联系 ${SITE_NAME}：反馈链接失效、内容勘误、资源补充或站点相关问题。`,
   path: '/contact',
 })

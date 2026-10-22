@@ -1,9 +1,5 @@
 <script setup lang="ts">
-usePageSeo({
-  title: 'IP 归属地',
-  description: '查询公网 IP 或域名的归属地、运营商和 ASN。支持粘贴网址，也可查看当前访问的公网 IP。',
-  path: '/tools/ip',
-})
+const tool = useToolSeo('ip')
 
 interface IpResponse {
   host: string
@@ -126,7 +122,7 @@ async function runLookup(self = false) {
       <span class="mx-1.5 text-stone-400">/</span>
       IP
     </p>
-    <h1 class="mt-2 text-3xl font-semibold tracking-tight">IP 归属地</h1>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">{{ tool.title }}</h1>
     <p class="mt-4 max-w-3xl leading-8 text-stone-700">
       输入公网 IP 或域名，查看归属地、运营商和 ASN。支持粘贴带 https:// 的地址。
     </p>

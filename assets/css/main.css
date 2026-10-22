@@ -169,6 +169,39 @@ html.dark .theme-sun {
   color: #9dccb4;
 }
 
+.home-hero-rise {
+  opacity: 0;
+  transform: translateY(1.4rem);
+  animation: home-hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.home-hero-rise--1 {
+  animation-delay: 0.06s;
+}
+
+.home-hero-rise--2 {
+  animation-delay: 0.2s;
+}
+
+.home-hero-rise--3 {
+  animation-delay: 0.36s;
+}
+
+@keyframes home-hero-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-rise {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 /* 放在 layer 外，避免被 Tailwind px-* 盖掉右侧内边距导致文字压箭头 */
 select {
   appearance: none;

@@ -8,11 +8,7 @@ import {
 } from '~/data/cn-holidays'
 import { getLunarDayInfo } from '~/utils/lunar'
 
-usePageSeo({
-  title: '日历',
-  description: '月历、农历节气、大陆法定节假日与调休、下次放假倒计时、工作日统计、证书到期速算与时间戳互转。',
-  path: '/tools/calendar',
-})
+const tool = useToolSeo('calendar')
 
 const WEEKDAYS = ['一', '二', '三', '四', '五', '六', '日'] as const
 
@@ -297,7 +293,7 @@ function convertTimestamp() {
       <span class="mx-1.5 text-stone-400">/</span>
       日历
     </p>
-    <h1 class="mt-2 text-3xl font-semibold tracking-tight">日历</h1>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">{{ tool.title }}</h1>
     <p class="mt-4 max-w-3xl leading-8 text-stone-700">
       月历与农历节气、大陆法定节假日调休、下次放假倒计时、工作日统计、到期速算与时间戳互转。全程在本地完成。
     </p>
