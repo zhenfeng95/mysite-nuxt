@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TOOLS_HUB, tools } from '~/data/tools'
+import { TOOLS_HUB, toolGroups, tools } from '~/data/tools'
 import { breadcrumbLd, itemListLd } from '~/utils/jsonLd'
 
 usePageSeo({
@@ -40,18 +40,29 @@ useHead({
     <p class="text-sm text-moss">实用工具</p>
     <h1 class="mt-2 text-3xl font-semibold tracking-tight">实用工具</h1>
     <p class="mt-4 leading-8 text-stone-700">
-      围绕建站常见操作整理，可查解析、看域名信息、Ping 测连通、查 IP 归属地，也可以做编解码、日历与房贷计算。
+      围绕建站与日常使用整理：网络排查、效率计算、专注减压，以及 2048、消消看、贪吃蛇、接水果等小游戏。
     </p>
-    <ul class="mt-10 grid gap-4 md:grid-cols-2">
-      <li v-for="tool in tools" :key="tool.slug" class="h-full">
-        <NuxtLink
-          :to="tool.href"
-          class="block h-full rounded-2xl border border-stone-300/80 bg-white/60 px-5 py-4 transition hover:border-moss/50"
-        >
-          <p class="font-semibold">{{ tool.title }}</p>
-          <p class="mt-1 text-sm leading-6 text-stone-600">{{ tool.description }}</p>
-        </NuxtLink>
-      </li>
-    </ul>
+
+    <section
+      v-for="(group, index) in toolGroups"
+      :key="group.id"
+      :class="index === 0 ? 'mt-10' : 'mt-12'"
+    >
+      <h2 class="text-xl font-semibold tracking-tight text-ink">{{ group.title }}</h2>
+      <p v-if="group.description" class="mt-2 text-sm leading-6 text-stone-600">
+        {{ group.description }}
+      </p>
+      <ul class="mt-5 grid gap-4 md:grid-cols-2">
+        <li v-for="tool in group.tools" :key="tool.slug" class="h-full">
+          <NuxtLink
+            :to="tool.href"
+            class="block h-full rounded-2xl border border-stone-300/80 bg-white/60 px-5 py-4 transition hover:border-moss/50"
+          >
+            <p class="font-semibold">{{ tool.title }}</p>
+            <p class="mt-1 text-sm leading-6 text-stone-600">{{ tool.description }}</p>
+          </NuxtLink>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
