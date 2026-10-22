@@ -40,7 +40,7 @@ useHead({
     <p class="text-sm text-moss">实用工具</p>
     <h1 class="mt-2 text-3xl font-semibold tracking-tight">实用工具</h1>
     <p class="mt-4 leading-8 text-stone-700">
-      围绕建站与日常使用整理：网络排查、效率计算、专注减压，以及 2048、消消看、贪吃蛇、接水果等小游戏。
+      围绕建站与日常使用整理：网络排查、效率计算（含二维码生成）、专注减压，以及捏泡泡、木鱼、赛博抽签等小游戏。
     </p>
 
     <section

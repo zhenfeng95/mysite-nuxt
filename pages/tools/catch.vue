@@ -340,7 +340,7 @@ onBeforeUnmount(() => {
 
     <p class="mt-6 text-sm text-stone-500">
       也可以玩玩
-      <NuxtLink to="/tools/snake" class="text-moss hover:underline">贪吃蛇</NuxtLink>
+      <NuxtLink to="/tools/bubbles" class="text-moss hover:underline">捏泡泡</NuxtLink>
       或
       <NuxtLink to="/tools/match3" class="text-moss hover:underline">消消看</NuxtLink>。
     </p>

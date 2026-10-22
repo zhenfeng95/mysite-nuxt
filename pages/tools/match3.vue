@@ -289,7 +289,9 @@ onMounted(() => {
 
     <p class="mt-6 text-sm text-stone-500">
       也可以玩玩
-      <NuxtLink to="/tools/2048" class="text-moss hover:underline">2048</NuxtLink>。
+      <NuxtLink to="/tools/bubbles" class="text-moss hover:underline">捏泡泡</NuxtLink>
+      或
+      <NuxtLink to="/tools/catch" class="text-moss hover:underline">接水果</NuxtLink>。
     </p>
   </div>
 </template>

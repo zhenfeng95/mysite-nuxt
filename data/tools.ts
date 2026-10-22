@@ -57,7 +57,7 @@ export const toolGroups: ToolGroup[] = [
   {
     id: 'utility',
     title: '效率与计算',
-    description: '编解码、日历速算与房贷估算。',
+    description: '编解码、二维码、日历速算与房贷估算。',
     tools: [
       {
         slug: 'encode',
@@ -65,6 +65,13 @@ export const toolGroups: ToolGroup[] = [
         seoTitle: 'Base64 / URL 编解码与随机字符串生成',
         description: 'Base64、URL 编解码，以及可配置字符集的随机字符串生成，适合处理链接、Token 与配置片段。',
         href: '/tools/encode',
+      },
+      {
+        slug: 'qrcode',
+        title: '二维码生成',
+        seoTitle: '二维码生成：把链接或文案生成可下载二维码',
+        description: '输入网址或任意文案，生成二维码。可调尺寸与容错级别，支持下载与复制图片。',
+        href: '/tools/qrcode',
       },
       {
         slug: 'calendar',
@@ -108,14 +115,35 @@ export const toolGroups: ToolGroup[] = [
   {
     id: 'games',
     title: '小游戏',
-    description: '浏览器里随手玩一会儿：2048、消消看、贪吃蛇与接水果。',
+    description: '适合手机点着玩：捏泡泡、木鱼、赛博抽签、云养、消消看与接水果。',
     tools: [
       {
-        slug: '2048',
-        title: '2048',
-        seoTitle: '2048：经典数字合并小游戏',
-        description: '滑动合并相同数字，目标凑出 2048。支持键盘与触屏，成绩保存在本机。',
-        href: '/tools/2048',
+        slug: 'bubbles',
+        title: '捏泡泡',
+        seoTitle: '捏泡泡：点破泡泡解压，带清脆声效',
+        description: '满屏泡泡，点一下破一个，配上清脆「啪」声。不用通关，纯解压。',
+        href: '/tools/bubbles',
+      },
+      {
+        slug: 'muyu',
+        title: '木鱼',
+        seoTitle: '指尖木鱼：点击积功德，可挂机自动敲',
+        description: '点一下敲一声木鱼，功德 +1。可开启自动敲，也可搭配白噪音一起用。',
+        href: '/tools/muyu',
+      },
+      {
+        slug: 'lot',
+        title: '赛博抽签',
+        seoTitle: '赛博抽签：摇一摇或点一下，抽取幽默治愈签文',
+        description: '电子抽签：点按或摇一摇出签。文案幽默、治愈、带点网感，仅供娱乐。',
+        href: '/tools/lot',
+      },
+      {
+        slug: 'nurture',
+        title: '云养',
+        seoTitle: '云养猫 / 云种树：点击喂食浇水的极简养成',
+        description: '养一只猫或种一棵树。点击喂食、浇水，看简单动画反馈。进度保存在本机。',
+        href: '/tools/nurture',
       },
       {
         slug: 'match3',
@@ -123,13 +151,6 @@ export const toolGroups: ToolGroup[] = [
         seoTitle: '消消看：简化三消，点选相邻方块交换消除',
         description: '点选两个相邻方块交换，三个及以上相同即可消除。连锁得分，适合轻松解压。',
         href: '/tools/match3',
-      },
-      {
-        slug: 'snake',
-        title: '贪吃蛇',
-        seoTitle: '贪吃蛇：吃食物变长，别撞墙和自己',
-        description: '经典贪吃蛇。方向键或 WASD 控制，手机可滑动转向，最高分保存在本机。',
-        href: '/tools/snake',
       },
       {
         slug: 'catch',
@@ -152,6 +173,6 @@ export function findTool(slug: string) {
 export const TOOLS_HUB = {
   title: '实用工具',
   seoTitle: '建站实用工具：网络排查、效率计算、减压与小游戏',
-  description: '实用工具：DNS、域名、Ping、IP、编解码、日历、房贷、白噪音、番茄钟，以及 2048、消消看、贪吃蛇与接水果等。',
+  description: '实用工具：DNS、域名、Ping、IP、编解码、二维码、日历、房贷、白噪音、番茄钟，以及捏泡泡、木鱼、赛博抽签等。',
   path: '/tools',
 } as const
