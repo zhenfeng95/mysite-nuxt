@@ -26,7 +26,7 @@ export default defineNuxtConfig({
             ],
             meta: [
                 { name: 'bytedance-verification-code', content: 'BImYavCy7xAQ0tBUtN8A' },
-                { name: 'baidu-site-verification', content: 'codeva-9sBsSvrUOc' },
+                { name: 'baidu-site-verification', content: 'codeva-hdh3NAla6I' },
                 { name: 'shenma-site-verification', content: '7e14af04cc4a33ca966dda5366241475_1790244345' },
             ],
         },
@@ -46,6 +46,7 @@ export default defineNuxtConfig({
         '/api/dns': { prerender: false },
         '/api/domain': { prerender: false },
         '/api/ping': { prerender: false },
+        '/api/status': { prerender: false },
         '/api/ip': { prerender: false },
         // All content routes are static HTML at build time → Vercel CDN HIT
         '/**': { prerender: true },

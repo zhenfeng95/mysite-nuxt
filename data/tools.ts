@@ -19,7 +19,7 @@ export const toolGroups: ToolGroup[] = [
   {
     id: 'network',
     title: '网络与域名',
-    description: '查解析、看域名信息、测连通与 IP 归属。',
+    description: '查解析、看域名信息、测连通、看网站是否正常与 IP 归属。',
     tools: [
       {
         slug: 'dns',
@@ -44,6 +44,14 @@ export const toolGroups: ToolGroup[] = [
         description:
           '输入域名或 IP，从本站服务器探测连通性、延迟和丢包。无法发送 ICMP 时，改用 TCP 443 或 80 测量建连时间。',
         href: '/tools/ping',
+      },
+      {
+        slug: 'status',
+        title: '网站状态检测',
+        seoTitle: '网站状态检测：在线看网站是否可访问、状态码与响应耗时',
+        description:
+          '输入网址或域名，从本站服务器检测目标是否可访问，查看 HTTP 状态码、重定向与响应耗时，快速判断站点是否正常。',
+        href: '/tools/status',
       },
       {
         slug: 'ip',
@@ -172,7 +180,7 @@ export function findTool(slug: string) {
 
 export const TOOLS_HUB = {
   title: '实用工具',
-  seoTitle: '建站实用工具：网络排查、效率计算、减压与小游戏',
-  description: '实用工具：DNS、域名、Ping、IP、编解码、二维码、日历、房贷、白噪音、番茄钟，以及捏泡泡、木鱼、赛博抽签等。',
+  seoTitle: '实用工具：网络排查、效率计算、减压与小游戏',
+  description: '实用工具：DNS、域名、Ping、网站状态、IP、编解码、二维码、日历、房贷、白噪音、番茄钟，以及捏泡泡、木鱼、赛博抽签等。',
   path: '/tools',
 } as const
