@@ -13,7 +13,6 @@ export default defineEventHandler((event) => {
   const staticPaths = [
     '/',
     '/digital-infra',
-    '/guides',
     '/tools',
     '/side-hustle',
     '/about',

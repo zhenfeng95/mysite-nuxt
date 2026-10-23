@@ -33,7 +33,7 @@ useHead({
       type: 'application/ld+json',
       innerHTML: JSON.stringify(breadcrumbLd([
         { name: '首页', path: '/' },
-        { name: '网站部署', path: '/guides' },
+        { name: '建站攻略', path: '/digital-infra' },
         { name: guide.title, path },
       ])),
     },
@@ -43,7 +43,7 @@ useHead({
 
 <template>
   <article v-if="guide">
-    <p class="text-sm text-moss">网站部署</p>
+    <p class="text-sm text-moss">建站攻略 · 网站部署</p>
     <h1 class="mt-2 text-3xl font-semibold tracking-tight">{{ guide.title }}</h1>
     <p class="mt-3 text-sm text-stone-500">更新于 {{ guide.updatedAt }}</p>
     <div class="mt-8">

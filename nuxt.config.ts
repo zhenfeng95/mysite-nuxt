@@ -52,8 +52,9 @@ export default defineNuxtConfig({
 
         '/project': { redirect: { to: '/', statusCode: 301 } },
         '/message': { redirect: { to: '/contact', statusCode: 301 } },
-        '/article': { redirect: { to: '/guides', statusCode: 301 } },
-        '/article/**': { redirect: { to: '/guides', statusCode: 301 } },
+        '/guides': { redirect: { to: '/digital-infra', statusCode: 301 } },
+        '/article': { redirect: { to: '/digital-infra', statusCode: 301 } },
+        '/article/**': { redirect: { to: '/digital-infra', statusCode: 301 } },
         '/guides/dnshe-free-domain-guide': {
             redirect: { to: '/digital-infra/dnshe-free-domain-guide', statusCode: 301 },
         },

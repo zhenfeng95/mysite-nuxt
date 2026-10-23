@@ -23,7 +23,7 @@ useHead({
 });
 
 const kindLabel: Record<GuideKind, string> = {
-    steps: '网站部署',
+    steps: '建站攻略 · 网站部署',
     excerpt: '建站攻略',
     side: '副业变现',
 };
@@ -51,13 +51,7 @@ const recentGuides = [...guides].sort((a, b) => b.updatedAt.localeCompare(a.upda
                         class="text-ink underline decoration-stone-300 underline-offset-4 transition hover:text-gold hover:decoration-gold/50"
                         >建站攻略</NuxtLink
                     >
-                    整理域名、邮箱与 Cloudflare；
-                    <NuxtLink
-                        to="/guides"
-                        class="text-ink underline decoration-stone-300 underline-offset-4 transition hover:text-gold hover:decoration-gold/50"
-                        >网站部署</NuxtLink
-                    >
-                    写清上线、自动更新与免费证书；核对解析时可用
+                    整理域名、邮箱与 Cloudflare，并写清网站部署、自动更新与免费证书；核对解析时可用
                     <NuxtLink
                         to="/tools"
                         class="text-ink underline decoration-stone-300 underline-offset-4 transition hover:text-gold hover:decoration-gold/50"

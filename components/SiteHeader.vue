@@ -8,7 +8,6 @@ const menuOpen = ref(false)
 const links = [
   { to: '/', label: '首页' },
   { to: '/digital-infra', label: '建站攻略' },
-  { to: '/guides', label: '网站部署' },
   { to: '/tools', label: '实用工具' },
   { to: '/side-hustle', label: '副业变现' },
 ]
@@ -16,6 +15,14 @@ const links = [
 function isActive(path: string) {
   if (path === '/') {
     return route.path === '/'
+  }
+  if (path === '/digital-infra') {
+    return (
+      route.path === path
+      || route.path.startsWith(`${path}/`)
+      || route.path === '/guides'
+      || route.path.startsWith('/guides/')
+    )
   }
   return route.path === path || route.path.startsWith(`${path}/`)
 }

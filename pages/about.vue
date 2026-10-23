@@ -4,7 +4,7 @@ import { FULL_SITE_NAME, FULL_SITE_URL, SITE_CONTACT_EMAIL, SITE_NAME, SITE_SLOG
 usePageSeo({
   title: '关于我们',
   seoTitle: `关于${SITE_NAME}：站点定位与建站笔记内容边界`,
-  description: `${SITE_NAME} 是个人技术笔记站点，整理网站部署与建站攻略：域名、邮箱、证书、Cloudflare 等实践路径。`,
+  description: `${SITE_NAME} 是个人技术笔记站点，建站攻略覆盖域名、邮箱、Cloudflare 与网站部署（上线、证书等）实践路径。`,
   path: '/about',
 })
 </script>
@@ -20,18 +20,10 @@ usePageSeo({
     <section class="mt-10 space-y-4">
       <h2 class="text-xl font-semibold text-ink">这个站点写什么</h2>
       <p class="leading-8 text-stone-700">
-        内容集中在两块：
+        内容集中在
+        <NuxtLink to="/digital-infra" class="text-moss underline decoration-moss/40 underline-offset-4 hover:decoration-moss">建站攻略</NuxtLink>
+        ：域名、邮箱、Cloudflare 等服务入口与图文教程，以及网站怎么上线、用 GitHub 自动更新、申请免费证书等部署步骤。
       </p>
-      <ul class="list-disc space-y-2 pl-5 leading-7 text-stone-700">
-        <li>
-          <NuxtLink to="/guides" class="text-moss underline decoration-moss/40 underline-offset-4 hover:decoration-moss">网站部署</NuxtLink>
-          ：站点怎么跑起来、怎么用 GitHub 自动更新、怎么申请免费证书等步骤说明。
-        </li>
-        <li>
-          <NuxtLink to="/digital-infra" class="text-moss underline decoration-moss/40 underline-offset-4 hover:decoration-moss">建站攻略</NuxtLink>
-          ：域名、邮箱、Cloudflare 全家桶等服务入口与图文教程。
-        </li>
-      </ul>
       <p class="leading-8 text-stone-700">
         港美股、开户与跨境投资相关内容不放在本域名，而在
         <a

@@ -11,7 +11,6 @@ const siteLinks = [
 
 const topicLinks = [
   { to: '/digital-infra', label: '建站攻略' },
-  { to: '/guides', label: '网站部署' },
   { to: '/tools', label: '实用工具' },
   { to: '/side-hustle', label: '副业变现' },
 ] as const
@@ -31,7 +30,7 @@ function isExternal(href: string) {
             <span class="leading-none">{{ SITE_NAME }}</span>
           </NuxtLink>
           <p class="mt-3 text-sm leading-7 text-stone-500">
-            {{ SITE_SLOGAN }}。建站攻略整理域名、邮箱与 Cloudflare；网站部署写清上线、自动更新与免费证书。
+            {{ SITE_SLOGAN }}。建站攻略整理域名、邮箱与 Cloudflare，并写清网站部署、自动更新与免费证书。
           </p>
         </div>
 

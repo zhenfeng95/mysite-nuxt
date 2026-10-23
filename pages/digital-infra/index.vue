@@ -1,12 +1,29 @@
 <script setup lang="ts">
 import { infraEntries, infraGroups } from '~/data/entries'
+import { guidePath, guides } from '~/data/guides'
 import { breadcrumbLd, itemListLd } from '~/utils/jsonLd'
 
 const title = '建站攻略'
-const seoTitle = '建站攻略：域名、邮箱与 Cloudflare 等服务教程'
+const seoTitle = '建站攻略：域名、邮箱与网站部署教程'
 const description =
-  '按域名、邮箱、建站分类整理 Google Workspace、Spaceship、DNSHE、OquMail 与 Cloudflare 的官网入口和图文教程。'
+  '按域名、邮箱、建站分类整理服务入口与图文教程，并写清网站部署：上线、GitHub 自动更新与免费证书。'
 const path = '/digital-infra'
+const stepGuides = guides.filter(guide => guide.kind === 'steps')
+
+const listItems = [
+  ...infraEntries
+    .filter(entry => entry.guideSlug)
+    .map(entry => ({
+      name: entry.name,
+      path: `/digital-infra/${entry.guideSlug}`,
+      description: entry.description,
+    })),
+  ...stepGuides.map(guide => ({
+    name: guide.title,
+    path: guidePath(guide),
+    description: guide.description,
+  })),
+]
 
 usePageSeo({
   title,
@@ -23,13 +40,7 @@ useHead({
         name: title,
         description,
         path,
-        items: infraEntries
-          .filter(entry => entry.guideSlug)
-          .map(entry => ({
-            name: entry.name,
-            path: `/digital-infra/${entry.guideSlug}`,
-            description: entry.description,
-          })),
+        items: listItems,
       })),
     },
     {
@@ -48,7 +59,7 @@ useHead({
     <p class="text-sm text-moss">建站攻略</p>
     <h1 class="mt-2 text-3xl font-semibold tracking-tight">建站攻略</h1>
     <p class="mt-4 leading-8 text-stone-700">
-      按域名、邮箱和建站分类，整理相关服务的官网入口和图文教程。
+      按域名、邮箱和建站分类整理服务入口与图文教程；网站部署写清上线、自动更新与免费证书。
     </p>
     <section
       v-for="group in infraGroups"
@@ -96,6 +107,25 @@ useHead({
               官方网站
             </a>
           </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold tracking-tight">网站部署</h2>
+      <p class="mt-1 text-sm leading-6 text-stone-500">
+        买服务器上线、GitHub 自动更新、免费证书，以及免费静态托管怎么选。
+      </p>
+      <ul class="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <li v-for="guide in stepGuides" :key="guide.slug" class="h-full">
+          <NuxtLink
+            :to="guidePath(guide)"
+            class="block h-full rounded-2xl border border-stone-300/80 bg-white/60 px-5 py-4 transition hover:border-moss/50"
+          >
+            <p class="text-xs text-stone-500">更新于 {{ guide.updatedAt }}</p>
+            <p class="mt-1 font-semibold">{{ guide.title }}</p>
+            <p class="mt-1 text-sm leading-6 text-stone-600">{{ guide.description }}</p>
+          </NuxtLink>
         </li>
       </ul>
     </section>

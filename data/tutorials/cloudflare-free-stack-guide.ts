@@ -187,7 +187,11 @@ export const cloudflareFreeStackGuide = {
             items: [
                 '更适合：个人博客、作品集、文档站、Demo；接受 Serverless 与额度思维；愿意把域名 NS 交给 Cloudflare。',
                 '不太适合：强依赖传统 VPS / 宝塔面板的运维习惯；需要完整企业邮箱（收发、客户端、协作套件）；超大流量或复杂有状态后端，早已超出免费额度舒适区。',
-                '和本站「网站部署」的关系：买服务器、装 Nginx、配证书那条路径仍在「网站部署」模块；本页讲的是另一条——尽量不买服务器的 Cloudflare 路径。',
+                [
+                    '和「网站部署」分组的关系：买服务器、装 Nginx、配证书那条路径仍在建站攻略的「网站部署」分组；本页讲的是另一条——尽量不买服务器的 Cloudflare 路径。若还在 GitHub Pages / Vercel / Cloudflare Pages 之间犹豫，可看 ',
+                    { text: '免费静态托管怎么选', href: '/guides/free-static-hosting-guide' },
+                    '。',
+                ],
             ],
         },
         { type: 'h2' as const, text: '六、相关入口' },
@@ -202,7 +206,7 @@ export const cloudflareFreeStackGuide = {
                 ['站内：', { text: 'Google Workspace 低价 .com 教程', href: '/digital-infra/google-workspace-domain-guide' }],
                 ['站内：', { text: 'DNSHE 免费域名', href: '/digital-infra/dnshe-free-domain-guide' }],
                 ['站内：', { text: 'OquMail 域名邮箱', href: '/digital-infra/oqumail-free-domain-email-guide' }],
-                ['站内：', { text: '网站部署', href: '/guides' }],
+                ['站内：', { text: '建站攻略 · 网站部署', href: '/digital-infra' }],
             ],
         },
         {

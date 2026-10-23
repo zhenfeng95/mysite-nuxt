@@ -1,5 +1,6 @@
 import { cloudflareFreeStackGuide } from '~/data/tutorials/cloudflare-free-stack-guide'
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
+import { freeStaticHostingGuide } from '~/data/tutorials/free-static-hosting-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import { oqumailFreeDomainEmailGuide } from '~/data/tutorials/oqumail-free-domain-email-guide'
 import { rentuibangGuide } from '~/data/tutorials/rentuibang-guide'
@@ -828,6 +829,7 @@ export const guides: Guide[] = [
   websiteDeployGuide,
   githubWebhookGuide,
   acmeCertGuide,
+  freeStaticHostingGuide,
   googleWorkspaceDomainGuide,
   spaceshipXyzDomainGuide,
   cloudflareFreeStackGuide,

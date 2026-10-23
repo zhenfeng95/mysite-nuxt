@@ -22,7 +22,7 @@ interface IndexedItem extends SearchResult {
 
 const GROUP_LABEL: Record<SearchResultGroup, string> = {
     page: '页面',
-    guide: '网站部署',
+    guide: '建站攻略',
     service: '建站攻略',
     side: '副业变现',
 };
@@ -36,9 +36,6 @@ const KIND_LABEL = {
 } as const;
 
 function guideSearchGroup(kind: keyof typeof KIND_LABEL): SearchResultGroup {
-    if (kind === 'excerpt') {
-        return 'service';
-    }
     if (kind === 'side') {
         return 'side';
     }
@@ -112,22 +109,26 @@ function buildIndex(): IndexedItem[] {
             ),
         },
         {
-            id: 'page-guides',
-            group: 'page',
-            groupLabel: GROUP_LABEL.page,
-            title: '网站部署',
-            description: '上线、自动更新与免费证书等部署步骤',
-            to: '/guides',
-            haystack: buildHaystack('网站部署', '部署', '证书', '部署步骤'),
-        },
-        {
             id: 'page-infra',
             group: 'page',
             groupLabel: GROUP_LABEL.page,
             title: '建站攻略',
-            description: '域名、邮箱与免费建站相关服务与教程',
+            description: '域名、邮箱、Cloudflare 与网站部署（上线、证书）教程',
             to: '/digital-infra',
-            haystack: buildHaystack('建站攻略', '基建服务', '数字基建', '官网', '服务', '域名', '邮箱', 'Cloudflare'),
+            haystack: buildHaystack(
+                '建站攻略',
+                '网站部署',
+                '基建服务',
+                '数字基建',
+                '官网',
+                '服务',
+                '域名',
+                '邮箱',
+                'Cloudflare',
+                '部署',
+                '证书',
+                '部署步骤',
+            ),
         },
         {
             id: 'page-side-hustle',
@@ -206,8 +207,8 @@ function buildIndex(): IndexedItem[] {
     const services: IndexedItem[] = infraGroups.flatMap(section =>
         section.entries.map(entry => ({
             id: `service-${entry.id}`,
-            group: 'service' as const,
-            groupLabel: GROUP_LABEL.service,
+            group: 'guide' as const,
+            groupLabel: GROUP_LABEL.guide,
             title: entry.name,
             description: entry.description,
             href: entry.url,
