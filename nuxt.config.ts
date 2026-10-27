@@ -47,6 +47,7 @@ export default defineNuxtConfig({
         '/api/domain': { prerender: false },
         '/api/ping': { prerender: false },
         '/api/status': { prerender: false },
+        '/api/ssl': { prerender: false },
         '/api/ip': { prerender: false },
         // All content routes are static HTML at build time → Vercel CDN HIT
         '/**': { prerender: true },

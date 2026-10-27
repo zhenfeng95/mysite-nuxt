@@ -254,14 +254,16 @@ export const freeStaticHostingGuide = {
         {
             type: 'ul' as const,
             items: [
-                [{ text: 'GitHub Pages 文档', href: 'https://docs.github.com/pages' }],
-                [{ text: 'Vercel', href: 'https://vercel.com' }],
-                [{ text: 'Cloudflare Pages', href: 'https://pages.cloudflare.com' }],
-                ['站内：', { text: '网站运行机制与上线部署', href: '/guides/website-deploy-guide' }],
-                ['站内：', { text: 'Cloudflare 全家桶', href: '/digital-infra/cloudflare-free-stack-guide' }],
-                ['站内：', { text: '建站攻略 · 网站部署', href: '/digital-infra' }],
-            ],
-        },
+        [{ text: 'GitHub Pages 文档', href: 'https://docs.github.com/pages' }],
+        [{ text: 'Vercel', href: 'https://vercel.com' }],
+        [{ text: 'Cloudflare Pages', href: 'https://pages.cloudflare.com' }],
+        ['站内：', { text: '2026 免费建站一条龙', href: '/guides/free-site-pipeline-guide' }],
+        ['站内：', { text: 'Vercel 国内访问优化', href: '/guides/vercel-china-speed-guide' }],
+        ['站内：', { text: '网站运行机制与上线部署', href: '/guides/website-deploy-guide' }],
+        ['站内：', { text: 'Cloudflare 全家桶', href: '/digital-infra/cloudflare-free-stack-guide' }],
+        ['站内：', { text: '建站攻略 · 网站部署', href: '/digital-infra' }],
+      ],
+    },
         {
             type: 'p' as const,
             parts: [

@@ -1,10 +1,13 @@
 import { cloudflareFreeStackGuide } from '~/data/tutorials/cloudflare-free-stack-guide'
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
+import { freeSitePipelineGuide } from '~/data/tutorials/free-site-pipeline-guide'
 import { freeStaticHostingGuide } from '~/data/tutorials/free-static-hosting-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import { oqumailFreeDomainEmailGuide } from '~/data/tutorials/oqumail-free-domain-email-guide'
 import { rentuibangGuide } from '~/data/tutorials/rentuibang-guide'
 import { spaceshipXyzDomainGuide } from '~/data/tutorials/spaceship-xyz-domain-guide'
+import { sslExpiryCheckGuide } from '~/data/tutorials/ssl-expiry-check-guide'
+import { vercelChinaSpeedGuide } from '~/data/tutorials/vercel-china-speed-guide'
 
 
 export type TextPart = string | { text: string; href: string }
@@ -830,6 +833,9 @@ export const guides: Guide[] = [
   githubWebhookGuide,
   acmeCertGuide,
   freeStaticHostingGuide,
+  vercelChinaSpeedGuide,
+  freeSitePipelineGuide,
+  sslExpiryCheckGuide,
   googleWorkspaceDomainGuide,
   spaceshipXyzDomainGuide,
   cloudflareFreeStackGuide,

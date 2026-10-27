@@ -19,7 +19,7 @@ export const toolGroups: ToolGroup[] = [
   {
     id: 'network',
     title: '网络与域名',
-    description: '查解析、看域名信息、测连通、看网站是否正常与 IP 归属。',
+    description: '查解析、看域名信息、测连通、看网站与证书是否正常，以及 IP 归属。',
     tools: [
       {
         slug: 'dns',
@@ -52,6 +52,14 @@ export const toolGroups: ToolGroup[] = [
         description:
           '输入网址或域名，从本站服务器检测目标是否可访问，查看 HTTP 状态码、重定向与响应耗时，快速判断站点是否正常。',
         href: '/tools/status',
+      },
+      {
+        slug: 'ssl',
+        title: 'SSL 证书查看',
+        seoTitle: 'SSL 证书查看：在线查 HTTPS 证书到期时间与颁发者',
+        description:
+          '输入域名或网址，查看 HTTPS 证书的生效/到期时间、剩余天数、颁发者与备用名（SAN），方便核对自动续期是否正常。',
+        href: '/tools/ssl',
       },
       {
         slug: 'ip',
@@ -181,6 +189,6 @@ export function findTool(slug: string) {
 export const TOOLS_HUB = {
   title: '实用工具',
   seoTitle: '实用工具：网络排查、效率计算、减压与小游戏',
-  description: '实用工具：DNS、域名、Ping、网站状态、IP、编解码、二维码、日历、房贷、白噪音、番茄钟，以及捏泡泡、木鱼、赛博抽签等。',
+  description: '实用工具：DNS、域名、Ping、网站状态、SSL 证书、IP、编解码、二维码、日历、房贷、白噪音、番茄钟，以及捏泡泡、木鱼、赛博抽签等。',
   path: '/tools',
 } as const
