@@ -202,6 +202,98 @@ html.dark .theme-sun {
   }
 }
 
+.home-holiday {
+  opacity: 0;
+  transform: translateY(-0.55rem);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-holiday--ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-holiday-sheen {
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(61, 107, 84, 0.1) 48%,
+    transparent 62%
+  );
+  background-size: 220% 100%;
+  opacity: 0;
+}
+
+.home-holiday--ready .home-holiday-sheen {
+  opacity: 1;
+  animation: home-holiday-sheen 4.8s ease-in-out 0.7s infinite;
+}
+
+.home-holiday-label {
+  display: inline-block;
+}
+
+.home-holiday--ready .home-holiday-label {
+  animation: home-holiday-pulse 2.8s ease-in-out 0.9s infinite;
+}
+
+.home-holiday-days {
+  display: inline-block;
+  min-width: 1.25em;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-holiday-link:hover .home-holiday-arrow {
+  transform: translateX(0.2rem);
+}
+
+.home-holiday-arrow {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes home-holiday-sheen {
+  0%,
+  100% {
+    background-position: 120% 0;
+  }
+  50% {
+    background-position: -20% 0;
+  }
+}
+
+@keyframes home-holiday-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-holiday,
+  .home-holiday-arrow {
+    transition: none;
+  }
+
+  .home-holiday {
+    opacity: 1;
+    transform: none;
+  }
+
+  .home-holiday--ready .home-holiday-sheen,
+  .home-holiday--ready .home-holiday-label {
+    animation: none;
+  }
+
+  .home-holiday-sheen {
+    opacity: 0;
+  }
+}
+
 /* 放在 layer 外，避免被 Tailwind px-* 盖掉右侧内边距导致文字压箭头 */
 select {
   appearance: none;

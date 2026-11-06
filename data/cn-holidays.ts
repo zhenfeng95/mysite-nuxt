@@ -134,6 +134,26 @@ const BY_YEAR: Record<number, CnHolidayDay[]> = {
       { name: '国庆节', date: '2026-10-10' },
     ],
   ),
+  // 国办发明电〔2026〕10号
+  2027: buildYear(
+    2027,
+    [
+      { name: '元旦', from: '2027-01-01', to: '2027-01-03' },
+      { name: '春节', from: '2027-02-05', to: '2027-02-13' },
+      { name: '清明节', from: '2027-04-03', to: '2027-04-05', short: '清明' },
+      { name: '劳动节', from: '2027-05-01', to: '2027-05-05', short: '劳动' },
+      { name: '端午节', from: '2027-06-09', to: '2027-06-09', short: '端午' },
+      { name: '中秋节', from: '2027-09-15', to: '2027-09-15', short: '中秋' },
+      { name: '国庆节', from: '2027-10-01', to: '2027-10-07', short: '国庆' },
+    ],
+    [
+      { name: '春节', date: '2027-01-31' },
+      { name: '春节', date: '2027-02-14' },
+      { name: '劳动节', date: '2027-05-08' },
+      { name: '国庆节', date: '2027-09-26' },
+      { name: '国庆节', date: '2027-10-09' },
+    ],
+  ),
 }
 
 const holidayMap = new Map<string, CnHolidayDay>()

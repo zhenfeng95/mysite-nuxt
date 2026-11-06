@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getNextHolidayInfo, type NextHolidayInfo } from '~/data/cn-holidays';
 import { guidePath, guides, type GuideKind } from '~/data/guides';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_SLOGAN } from '~/data/site';
 import { websiteLd } from '~/utils/jsonLd';
@@ -29,6 +30,69 @@ const kindLabel: Record<GuideKind, string> = {
 };
 
 const recentGuides = [...guides].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).slice(0, 3);
+
+/** 客户端按访问日计算，避免静态预渲染写死构建日期 */
+const nextHoliday = ref<NextHolidayInfo | null>(null);
+const holidayReady = ref(false);
+const holidayDaysShown = ref(0);
+
+const holidayLine = computed(() => {
+    const info = nextHoliday.value;
+    if (!info) {
+        return null;
+    }
+    if (info.status === 'ongoing') {
+        return {
+            status: info.status,
+            name: info.name,
+            targetDays: info.daysToEnd,
+            detail: `${info.start} 至 ${info.end} · 含今天`,
+        };
+    }
+    return {
+        status: info.status,
+        name: info.name,
+        targetDays: info.daysToStart,
+        detail: `${info.start} 至 ${info.end}`,
+    };
+});
+
+function prefersReducedMotion() {
+    return import.meta.client && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function animateHolidayDays(target: number) {
+    if (target <= 0 || prefersReducedMotion()) {
+        holidayDaysShown.value = target;
+        return;
+    }
+    const start = performance.now();
+    const duration = Math.min(1200, 480 + target * 12);
+    const from = 0;
+
+    function tick(now: number) {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - (1 - t) ** 3;
+        holidayDaysShown.value = Math.round(from + (target - from) * eased);
+        if (t < 1) {
+            requestAnimationFrame(tick);
+        }
+    }
+
+    requestAnimationFrame(tick);
+}
+
+onMounted(() => {
+    const info = getNextHolidayInfo(new Date());
+    nextHoliday.value = info;
+    if (!info) {
+        return;
+    }
+    requestAnimationFrame(() => {
+        holidayReady.value = true;
+        animateHolidayDays(info.status === 'ongoing' ? info.daysToEnd : info.daysToStart);
+    });
+});
 </script>
 
 <template>
@@ -60,6 +124,41 @@ const recentGuides = [...guides].sort((a, b) => b.updatedAt.localeCompare(a.upda
                 </p>
             </div>
         </section>
+
+        <ClientOnly>
+            <div
+                v-if="holidayLine"
+                class="home-holiday relative overflow-hidden border-b border-stone-300/60 bg-moss/[0.06]"
+                :class="{ 'home-holiday--ready': holidayReady }"
+            >
+                <div class="home-holiday-sheen pointer-events-none absolute inset-0" aria-hidden="true" />
+                <NuxtLink
+                    to="/tools/calendar"
+                    class="home-holiday-link relative mx-auto flex max-w-[72rem] flex-wrap items-baseline justify-center gap-x-3 gap-y-1 px-4 py-3.5 text-center sm:justify-between sm:px-6 sm:text-left lg:px-8"
+                >
+                    <p class="text-sm font-medium tracking-tight text-ink sm:text-base">
+                        <span class="home-holiday-label text-moss">下次放假</span>
+                        <span class="mx-2 text-stone-300">·</span>
+                        <template v-if="holidayLine.status === 'ongoing'">
+                            正在放{{ holidayLine.name }}，还剩
+                            <span class="home-holiday-days tabular-nums text-moss">{{ holidayDaysShown }}</span>
+                            天
+                        </template>
+                        <template v-else>
+                            距{{ holidayLine.name }}还有
+                            <span class="home-holiday-days tabular-nums text-moss">{{ holidayDaysShown }}</span>
+                            天
+                        </template>
+                    </p>
+                    <p class="text-xs text-stone-500 sm:text-sm">
+                        {{ holidayLine.detail }}
+                        <span class="home-holiday-cta ml-2 text-moss underline decoration-moss/40 underline-offset-4">
+                            看日历 <span class="home-holiday-arrow inline-block">→</span>
+                        </span>
+                    </p>
+                </NuxtLink>
+            </div>
+        </ClientOnly>
 
         <!-- 与 SiteHeader / default layout 同宽：max-w-[72rem] + 相同 padding -->
         <section class="mx-auto w-full max-w-[72rem] px-4 py-14 sm:px-6 lg:px-8">
