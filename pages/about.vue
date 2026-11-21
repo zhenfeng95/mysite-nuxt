@@ -4,7 +4,7 @@ import { FULL_SITE_NAME, FULL_SITE_URL, SITE_CONTACT_EMAIL, SITE_NAME, SITE_SLOG
 usePageSeo({
   title: '关于我们',
   seoTitle: `关于${SITE_NAME}：站点定位与建站笔记内容边界`,
-  description: `${SITE_NAME} 是个人技术笔记站点，建站攻略覆盖域名、邮箱、Cloudflare 与网站部署（上线、证书等）实践路径。`,
+  description: `${SITE_NAME} 是个人技术笔记站点，建站攻略覆盖域名、邮箱、Cloudflare 与网站部署，AI 笔记写 Cursor、Obsidian 知识库步骤。`,
   path: '/about',
 })
 </script>
@@ -23,6 +23,8 @@ usePageSeo({
         内容集中在
         <NuxtLink to="/digital-infra" class="text-moss underline decoration-moss/40 underline-offset-4 hover:decoration-moss">建站攻略</NuxtLink>
         ：域名、邮箱、Cloudflare 等服务入口与图文教程，以及网站怎么上线、用 GitHub 自动更新、申请免费证书等部署步骤。
+        <NuxtLink to="/ai" class="text-moss underline decoration-moss/40 underline-offset-4 hover:decoration-moss">AI 笔记</NuxtLink>
+        写 Cursor、Obsidian 把本地笔记接成知识库的步骤。
       </p>
       <p class="leading-8 text-stone-700">
         港美股、开户与跨境投资相关内容不放在本域名，而在

@@ -16,18 +16,13 @@ export const SISTER_SITES = [
     href: NAV_SITE_URL,
     blurb: '网址导航与常用入口',
   },
-  {
-    name: '投资理财',
-    href: FULL_SITE_URL,
-    blurb: '港美股与跨境投资',
-  },
 ] as const
 
 /** 站点 slogan / 首页主句 */
 export const SITE_SLOGAN = '探索更好的路径，遇见更大的世界';
 
 export const SITE_DESCRIPTION =
-    '探索更好的路径，遇见更大的世界。「建站攻略」整理域名、邮箱与 Cloudflare，并写清网站部署、自动更新与免费证书。'
+    '探索更好的路径，遇见更大的世界。「建站攻略」整理域名、邮箱与 Cloudflare，并写清网站部署、自动更新与免费证书。「AI 笔记」写 Cursor、Obsidian 等把知识库接上 AI 的步骤。'
 
 /** 页脚免责说明 */
 export const SITE_DISCLAIMER =

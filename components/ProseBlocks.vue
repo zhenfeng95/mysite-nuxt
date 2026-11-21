@@ -99,7 +99,7 @@ onBeforeUnmount(() => {
           </template>
         </li>
       </ul>
-      <ol v-else-if="block.type === 'ol'" class="list-decimal space-y-2 pl-5">
+      <ol v-else-if="block.type === 'ol'" class="list-decimal space-y-2 pl-5" :start="block.start">
         <li v-for="(item, itemIndex) in block.items" :key="itemIndex">
           <template v-if="typeof item === 'string'">{{ item }}</template>
           <template v-else>

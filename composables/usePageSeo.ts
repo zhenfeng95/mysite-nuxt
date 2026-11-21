@@ -23,6 +23,7 @@ export function usePageSeo(input: PageSeoInput) {
     input.path.startsWith('/guides/')
     || input.path.startsWith('/digital-infra/')
     || input.path.startsWith('/side-hustle/')
+    || input.path.startsWith('/ai/')
 
   useSeoMeta({
     title: branded,

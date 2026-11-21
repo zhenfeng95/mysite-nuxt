@@ -66,6 +66,13 @@ export default defineNuxtConfig({
         '/guides/google-workspace-domain-guide': {
             redirect: { to: '/digital-infra/google-workspace-domain-guide', statusCode: 301 },
         },
+        '/ai/codex-obsidian-second-brain-guide': {
+            redirect: { to: '/ai/obsidian-second-brain-guide', statusCode: 301 },
+        },
+        '/ai/cursor-obsidian-second-brain-guide': {
+            redirect: { to: '/ai/obsidian-second-brain-guide', statusCode: 301 },
+        },
+
     },
 
     nitro: {
@@ -76,6 +83,7 @@ export default defineNuxtConfig({
                 '/about',
                 '/contact',
                 '/tools',
+                '/ai',
                 '/side-hustle',
                 '/sitemap.xml',
                 '/robots.txt',

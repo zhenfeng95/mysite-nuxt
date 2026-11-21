@@ -138,7 +138,7 @@ onBeforeUnmount(() => {
               v-model="query"
               type="search"
               class="h-12 w-full bg-transparent text-sm text-ink outline-none placeholder:text-stone-400"
-              placeholder="搜索部署与基建…"
+              placeholder="搜索笔记与工具…"
               autocomplete="off"
               enterkeyhint="search"
               @keydown="onInputKeydown"
@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
 
           <div class="min-h-0 flex-1 overflow-y-auto p-2">
             <p v-if="!query.trim()" class="px-3 py-8 text-center text-sm text-stone-500">
-              输入关键词，查找建站攻略与网站部署相关内容
+              输入关键词，查找建站攻略、AI 笔记与实用工具
             </p>
             <p v-else-if="!results.length" class="px-3 py-8 text-center text-sm text-stone-500">
               没有找到「{{ query.trim() }}」相关结果

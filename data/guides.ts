@@ -1,4 +1,5 @@
 import { cloudflareFreeStackGuide } from '~/data/tutorials/cloudflare-free-stack-guide'
+import { obsidianSecondBrainGuide } from '~/data/tutorials/obsidian-second-brain-guide'
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
 import { freeSitePipelineGuide } from '~/data/tutorials/free-site-pipeline-guide'
 import { freeStaticHostingGuide } from '~/data/tutorials/free-static-hosting-guide'
@@ -19,7 +20,7 @@ export type Block =
   | { type: 'h3'; text: string }
   | { type: 'h4'; text: string }
   | { type: 'ul'; items: Array<string | TextPart[]> }
-  | { type: 'ol'; items: Array<string | TextPart[]> }
+  | { type: 'ol'; items: Array<string | TextPart[]>; start?: number }
   | { type: 'quote'; parts: TextPart[] }
   | { type: 'code'; lang?: string; text: string }
   | { type: 'img'; src: string; alt: string; fit?: 'intrinsic' }
@@ -27,7 +28,7 @@ export type Block =
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'note'; text: string }
 
-export type GuideKind = 'steps' | 'excerpt' | 'side'
+export type GuideKind = 'steps' | 'excerpt' | 'side' | 'ai'
 
 export interface Guide {
   slug: string
@@ -844,6 +845,7 @@ export const guides: Guide[] = [
   oqumailFreeDomainEmailGuide,
   rentuibangGuide,
   fingerprintBrowserGuide,
+  obsidianSecondBrainGuide,
 ]
 
 export function findGuide(slug: string, kind?: GuideKind): Guide | undefined {
@@ -863,6 +865,9 @@ export function guidePath(guide: Pick<Guide, 'slug' | 'kind'>) {
   }
   if (guide.kind === 'side') {
     return `/side-hustle/${guide.slug}`
+  }
+  if (guide.kind === 'ai') {
+    return `/ai/${guide.slug}`
   }
   return `/guides/${guide.slug}`
 }
