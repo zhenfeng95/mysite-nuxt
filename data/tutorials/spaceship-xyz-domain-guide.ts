@@ -133,7 +133,32 @@ export const spaceshipXyzDomainGuide = {
         },
         {
             type: 'p' as const,
-            parts: ['登录后建议先在账户里打开两步验证，域名属于可转移资产，安全值得多点一下。'],
+            parts: ['选择「密码」作为身份验证方式，输入至少 8 个字符的密码，然后点击「注册」。'],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-create-password.png',
+            alt: 'Spaceship：设置账户密码并点击注册',
+        },
+        {
+            type: 'p' as const,
+            parts: [
+                '打开注册邮箱，找到 Spaceship 发送的邮件，输入邮件中的 6 位验证码并点击「验证」。如果没有收到，可以检查垃圾邮件或点击「重新发送验证码」。',
+            ],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-email-verify.png',
+            alt: 'Spaceship：输入邮箱验证码并点击验证',
+        },
+        {
+            type: 'p' as const,
+            parts: ['邮箱验证成功后会跳转到 Launchpad 页面，点击左上角的 Spaceship 图标即可返回首页。'],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-lanuchpad-home.png',
+            alt: 'Spaceship：在 Launchpad 页面点击左上角图标返回首页',
         },
         { type: 'h3' as const, text: '2. 搜索 6–9 位纯数字 .xyz' },
         {
@@ -152,22 +177,13 @@ export const spaceshipXyzDomainGuide = {
         {
             type: 'p' as const,
             parts: [
-                '可用时，结果页常见标价约 US$0.67（示意，具体以当时搜索结果为准）。同一串数字往下看「建议」里的 .com、.org、.net 等，往往要贵上不少，价差一眼就能看出来。',
+                '可用时，结果页常见标价约 US$0.67（示意，具体以当时搜索结果为准）。同一串数字往下看「建议」里的 .com、.org、.net 等，往往要贵上不少，价差一眼就能看出来，然后点击右侧的加入购物车按钮。',
             ],
         },
         {
             type: 'img' as const,
             src: '/images/tutorials/spaceship-search-result-xyz.png',
             alt: 'Spaceship：纯数字 .xyz 搜索结果约 US$0.67，下方建议后缀更贵',
-        },
-        {
-            type: 'p' as const,
-            parts: ['加入购物车后先看价格：若已是约 $1 上下，基本对上廉价档；若明显偏高，换名字或放弃「四五元」预期。'],
-        },
-        {
-            type: 'img' as const,
-            src: '/images/tutorials/spaceship-add-to-cart.png',
-            alt: 'Spaceship：点击「加入购物车」',
         },
         {
             type: 'p' as const,
@@ -189,17 +205,53 @@ export const spaceshipXyzDomainGuide = {
             src: '/images/tutorials/spaceship-cart-checkout.png',
             alt: 'Spaceship：购物车订单详情，核对价格后结账',
         },
-        { type: 'h3' as const, text: '3. 填促销码并结账' },
+        { type: 'h3' as const, text: '3. 填域名联系人并结账' },
         {
             type: 'p' as const,
-            parts: [
-                '付款前系统会要求填写域名联系人：点 「添加地址」，补全注册人信息；可勾选「为管理、技术、账单联系人使用相同地址」，填完后点 「应用」。.xyz 注册通常需要这些联系地址，缺了会卡住结账。信息可填真实个人信息——平台一般有 WHOIS 隐私保护，对外不会直接公开你的姓名与地址。',
-            ],
+            parts: ['付款前系统会要求填写域名联系人，在购物车中找到「域名联系人」，点击右侧的「编辑」，填写域名注册所需的联系人信息。'],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-host-concat.png',
+            alt: 'Spaceship：在购物车中编辑域名联系人',
+        },
+        {
+            type: 'p' as const,
+            parts: ['点 「添加地址」，补全注册人信息；可勾选「为管理、技术、账单联系人使用相同地址」。'],
         },
         {
             type: 'img' as const,
             src: '/images/tutorials/spaceship-domain-contacts.png',
             alt: 'Spaceship：域名联系人，添加地址后应用',
+        },
+        {
+            type: 'p' as const,
+            parts: ['在「添加您的第一个地址」窗口中，填写姓名、地址、国家和城市等信息，确认无误后点击「保存」。'],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-first-address.png',
+            alt: 'Spaceship：填写并保存第一个地址',
+        },
+        {
+            type: 'p' as const,
+            parts: [
+                '保存后点 「应用」。.xyz 注册通常需要这些联系地址，缺了会卡住结账。信息可填真实个人信息——平台一般有 WHOIS 隐私保护，对外不会直接公开你的姓名与地址。',
+            ],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-address-apply.png',
+            alt: 'Spaceship：选择域名联系人地址并应用',
+        },
+        {
+            type: 'p' as const,
+            parts: ['域名联系人地址应用成功后，确认购物车中的订单信息和总价，点击「结账」继续。'],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-checkout.png',
+            alt: 'Spaceship：确认域名联系人信息后点击结账',
         },
         {
             type: 'p' as const,
@@ -211,6 +263,24 @@ export const spaceshipXyzDomainGuide = {
             type: 'img' as const,
             src: '/images/tutorials/spaceship-payment-method.png',
             alt: 'Spaceship：付款详情，添加付款方式',
+        },
+        {
+            type: 'p' as const,
+            parts: ['如果选择信用卡或借记卡付款，请填写卡号、有效期、安全码和持卡人姓名，选择账单地址后点击「保存」。'],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-add-card.png',
+            alt: 'Spaceship：填写银行卡信息并保存付款方式',
+        },
+        {
+            type: 'p' as const,
+            parts: ['保存付款方式后，确认域名、付款方式和订单总价；如有促销代码，可先添加，确认无误后点击「立即支付」。'],
+        },
+        {
+            type: 'img' as const,
+            src: '/images/tutorials/spaceship-finish-pay.png',
+            alt: 'Spaceship：确认订单信息并点击立即支付',
         },
         { type: 'h2' as const, text: '五、买完建议接到 Cloudflare' },
         {

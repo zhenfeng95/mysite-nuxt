@@ -4,6 +4,10 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
 
+    devServer: {
+        port: 3001,
+    },
+
     experimental: {
         appManifest: false,
     },
@@ -72,22 +76,12 @@ export default defineNuxtConfig({
         '/ai/cursor-obsidian-second-brain-guide': {
             redirect: { to: '/ai/obsidian-second-brain-guide', statusCode: 301 },
         },
-
     },
 
     nitro: {
         prerender: {
             crawlLinks: true,
-            routes: [
-                '/',
-                '/about',
-                '/contact',
-                '/tools',
-                '/ai',
-                '/side-hustle',
-                '/sitemap.xml',
-                '/robots.txt',
-            ],
+            routes: ['/', '/about', '/contact', '/tools', '/ai', '/side-hustle', '/sitemap.xml', '/robots.txt'],
             ignore: ['/api/geo', '/api/dns', '/api/domain', '/api/ping', '/api/ip'],
         },
     },
