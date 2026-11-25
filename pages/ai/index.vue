@@ -3,8 +3,8 @@ import { guidePath, guides } from '~/data/guides'
 import { breadcrumbLd, itemListLd } from '~/utils/jsonLd'
 
 const title = 'AI 笔记'
-const seoTitle = 'AI 笔记：Cursor、Obsidian 与知识库实践'
-const description = '整理用 Cursor、Obsidian 把本地笔记接成可读写知识库的步骤，后续会继续补充同类实践。'
+const seoTitle = 'AI 笔记：Codex、Obsidian 与知识库实践'
+const description = '整理用 Codex、Obsidian 把本地笔记接成可读写知识库的步骤，后续会继续补充同类实践。'
 const path = '/ai'
 const aiGuides = guides.filter(guide => guide.kind === 'ai')
 
@@ -46,7 +46,7 @@ useHead({
     <p class="text-sm text-moss">AI 笔记</p>
     <h1 class="mt-2 text-3xl font-semibold tracking-tight">AI 笔记</h1>
     <p class="mt-4 leading-8 text-stone-700">
-      整理用 Cursor、Obsidian 把本地笔记接成可读写知识库的步骤，后续会继续补充同类实践。
+      整理用 Codex、Obsidian 把本地笔记接成可读写知识库的步骤，后续会继续补充同类实践。
     </p>
     <ul class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
       <li v-for="guide in aiGuides" :key="guide.slug" class="h-full">

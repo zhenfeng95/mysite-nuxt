@@ -7,6 +7,7 @@ const menuOpen = ref(false)
 
 const links = [
   { to: '/', label: '首页' },
+  { to: '/blog', label: '个人博客' },
   { to: '/digital-infra', label: '建站攻略' },
   { to: '/ai', label: 'AI 笔记' },
   { to: '/tools', label: '实用工具' },

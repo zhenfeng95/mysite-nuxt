@@ -28,6 +28,7 @@ const kindLabel: Record<GuideKind, string> = {
     excerpt: '建站攻略',
     side: '副业变现',
     ai: 'AI 笔记',
+    blog: '个人博客',
 };
 
 const recentGuides = [...guides].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).slice(0, 3);
@@ -110,19 +111,19 @@ onMounted(() => {
                     </span>
                 </h1>
                 <p class="home-hero-rise home-hero-rise--3 mx-auto mt-8 max-w-xl text-sm leading-7 text-stone-500 sm:text-base">
-                    个人维护的笔记：
+                    在这里，我把实践过程整理成笔记：
                     <NuxtLink
                         to="/digital-infra"
                         class="text-ink underline decoration-stone-300 underline-offset-4 transition hover:text-gold hover:decoration-gold/50"
                         >建站攻略</NuxtLink
                     >
-                    整理域名、邮箱与 Cloudflare，并写清网站部署、自动更新与免费证书；
+                    涵盖域名、邮箱、Cloudflare，以及网站部署、自动更新和免费证书；
                     <NuxtLink
                         to="/ai"
                         class="text-ink underline decoration-stone-300 underline-offset-4 transition hover:text-gold hover:decoration-gold/50"
                         >AI 笔记</NuxtLink
                     >
-                    写 Cursor、Obsidian 知识库步骤；核对解析时可用
+                    分享 Codex 和 Obsidian 知识库的使用步骤。需要核对域名解析时，也可以使用
                     <NuxtLink
                         to="/tools"
                         class="text-ink underline decoration-stone-300 underline-offset-4 transition hover:text-gold hover:decoration-gold/50"
@@ -171,7 +172,7 @@ onMounted(() => {
         <section class="mx-auto w-full max-w-[72rem] px-4 py-14 sm:px-6 lg:px-8">
             <h2 class="font-serif text-2xl tracking-tight text-ink sm:text-3xl">最近更新</h2>
             <p class="mt-3 text-sm leading-7 text-stone-500">
-                域名注册、免费邮箱、Cloudflare、服务器上线、证书续期，以及 Cursor、Obsidian 知识库等实践笔记，按更新时间排列。
+                个人经历、建站攻略与 AI 实践笔记，按更新时间排列。
             </p>
             <ul class="mt-10 grid gap-5 md:grid-cols-2 md:gap-6">
                 <li v-for="guide in recentGuides" :key="guide.slug" class="h-full">

@@ -160,7 +160,7 @@ export const cloudflareFreeStackGuide = {
         { type: 'h2' as const, text: '四、直接复制：一段提示词让 AI 帮你搭' },
         {
             type: 'p' as const,
-            parts: ['可以把下面整段贴给 Codex、Cursor 等 AI 编程工具，让它按免费套餐搭出博客骨架：'],
+            parts: ['可以把下面整段贴给 Codex 等 AI 编程工具，让它按免费套餐搭出博客骨架：'],
         },
         {
             type: 'code' as const,

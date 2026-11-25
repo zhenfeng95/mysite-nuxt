@@ -14,6 +14,7 @@ export default defineEventHandler((event) => {
     '/',
     '/digital-infra',
     '/ai',
+    '/blog',
     '/tools',
     '/side-hustle',
     '/about',

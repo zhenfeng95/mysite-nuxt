@@ -31,7 +31,7 @@ function isExternal(href: string) {
             <span class="leading-none">{{ SITE_NAME }}</span>
           </NuxtLink>
           <p class="mt-3 text-sm leading-7 text-stone-500">
-            {{ SITE_SLOGAN }}。建站攻略整理域名、邮箱与 Cloudflare；AI 笔记写 Cursor、Obsidian 知识库步骤。
+            {{ SITE_SLOGAN }}。建站攻略整理域名、邮箱与 Cloudflare；AI 笔记写 Codex、Obsidian 知识库步骤。
           </p>
         </div>
 

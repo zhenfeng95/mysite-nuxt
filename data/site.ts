@@ -22,7 +22,7 @@ export const SISTER_SITES = [
 export const SITE_SLOGAN = '探索更好的路径，遇见更大的世界';
 
 export const SITE_DESCRIPTION =
-    '探索更好的路径，遇见更大的世界。「建站攻略」整理域名、邮箱与 Cloudflare，并写清网站部署、自动更新与免费证书。「AI 笔记」写 Cursor、Obsidian 等把知识库接上 AI 的步骤。'
+    '探索更好的路径，遇见更大的世界。「建站攻略」整理域名、邮箱与 Cloudflare，并写清网站部署、自动更新与免费证书。「AI 笔记」写 Codex、Obsidian 等把知识库接上 AI 的步骤。'
 
 /** 页脚免责说明 */
 export const SITE_DISCLAIMER =

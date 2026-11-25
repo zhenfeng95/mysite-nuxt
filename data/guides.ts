@@ -10,6 +10,7 @@ import { rentuibangGuide } from '~/data/tutorials/rentuibang-guide'
 import { spaceshipXyzDomainGuide } from '~/data/tutorials/spaceship-xyz-domain-guide'
 import { sslExpiryCheckGuide } from '~/data/tutorials/ssl-expiry-check-guide'
 import { vercelChinaSpeedGuide } from '~/data/tutorials/vercel-china-speed-guide'
+import { startingANewCareer } from '~/data/blog/starting-a-new-career'
 
 
 export type TextPart = string | { text: string; href: string }
@@ -28,7 +29,7 @@ export type Block =
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'note'; text: string }
 
-export type GuideKind = 'steps' | 'excerpt' | 'side' | 'ai'
+export type GuideKind = 'steps' | 'excerpt' | 'side' | 'ai' | 'blog'
 
 export interface Guide {
   slug: string
@@ -846,6 +847,7 @@ export const guides: Guide[] = [
   rentuibangGuide,
   fingerprintBrowserGuide,
   obsidianSecondBrainGuide,
+  startingANewCareer,
 ]
 
 export function findGuide(slug: string, kind?: GuideKind): Guide | undefined {
@@ -860,6 +862,9 @@ export function findGuide(slug: string, kind?: GuideKind): Guide | undefined {
 }
 
 export function guidePath(guide: Pick<Guide, 'slug' | 'kind'>) {
+  if (guide.kind === 'blog') {
+    return `/blog/${guide.slug}`
+  }
   if (guide.kind === 'excerpt') {
     return `/digital-infra/${guide.slug}`
   }

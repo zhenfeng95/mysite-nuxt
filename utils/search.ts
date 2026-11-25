@@ -3,7 +3,7 @@ import { guidePath, guides } from '~/data/guides';
 import { infraGroups } from '~/data/entries';
 import { TOOLS_HUB, tools } from '~/data/tools';
 
-export type SearchResultGroup = 'page' | 'guide' | 'service' | 'side' | 'ai';
+export type SearchResultGroup = 'page' | 'guide' | 'service' | 'side' | 'ai' | 'blog';
 
 export interface SearchResult {
     id: string;
@@ -26,18 +26,23 @@ const GROUP_LABEL: Record<SearchResultGroup, string> = {
     service: '建站攻略',
     side: '副业变现',
     ai: 'AI 笔记',
+    blog: '个人博客',
 };
 
-const GROUP_ORDER: SearchResultGroup[] = ['page', 'guide', 'service', 'ai', 'side'];
+const GROUP_ORDER: SearchResultGroup[] = ['page', 'guide', 'service', 'ai', 'side', 'blog'];
 
 const KIND_LABEL = {
     steps: '网站部署',
     excerpt: '建站攻略',
     side: '副业变现',
     ai: 'AI 笔记',
+    blog: '个人博客',
 } as const;
 
 function guideSearchGroup(kind: keyof typeof KIND_LABEL): SearchResultGroup {
+    if (kind === 'blog') {
+        return 'blog';
+    }
     if (kind === 'side') {
         return 'side';
     }
@@ -140,12 +145,12 @@ function buildIndex(): IndexedItem[] {
             group: 'page',
             groupLabel: GROUP_LABEL.page,
             title: 'AI 笔记',
-            description: 'Cursor、Obsidian 与本地知识库实践',
+            description: 'Codex、Obsidian 与本地知识库实践',
             to: '/ai',
             haystack: buildHaystack(
                 'AI 笔记',
                 'AI',
-                'Cursor',
+                'Codex',
                 'Obsidian',
                 '知识库',
                 '第二大脑',
